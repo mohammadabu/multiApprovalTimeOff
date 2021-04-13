@@ -146,9 +146,9 @@ class CreateLeaveComment(models.TransientModel):
             res_id = user.id
         employee = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
         employee_login = self.env['hr.employee'].sudo().search([('id','=',employee_id)]).user_id.login
+        all_emails  = all_emails + "," + employee_login
         if not notApproved != "":
             message += ('<h2>Dear %s<h2><br/>') % (employee.name)
-            all_emails  = all_emails + "," + employee_login
         if notApproved != "":
             message += ('<h4>Request approval to leave by %s<h4><br/>') % (employee.name)
         else:
