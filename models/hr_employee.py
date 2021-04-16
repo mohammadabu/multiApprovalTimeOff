@@ -16,7 +16,7 @@ class HrEmployee(models.Model):
     def create(self,vals):
         try:   
             _logger.info("---------------------------")
-            _logger.info(vals)
+            _logger.info(vals['commencement_business'])
         except:
             _logger.info("An exception occurred")                                  
         rtn = super(HrEmployee,self).create(vals)
