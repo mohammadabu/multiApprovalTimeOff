@@ -17,6 +17,9 @@ class HrEmployee(models.Model):
         try:   
             _logger.info("---------------------------")
             _logger.info(vals['commencement_business'])
+            commencement_business = vals['commencement_business']
+            annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),('validity_start','>=',commencement_business)])
+            _logger.info(annual_leave_type)
         except:
             _logger.info("An exception occurred")                                  
         rtn = super(HrEmployee,self).create(vals)
