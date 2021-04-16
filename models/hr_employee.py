@@ -15,9 +15,8 @@ class HrEmployee(models.Model):
     @api.model
     def create(self,vals):
         try:   
-            if "commencement_business" in vals:
-                _logger.info("---------------------------")
-                _logger.info(vals['commencement_business'][0][2])
+            _logger.info("---------------------------")
+            _logger.info(vals)
         except:
             _logger.info("An exception occurred")                                  
         rtn = super(HrEmployee,self).create(vals)
