@@ -12,17 +12,21 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
     commencement_business = fields.Date("Date of commencement of business")
 
-    @api.model
-    def create(self,vals):
-        try:   
-            _logger.info("---------------------------")
-            _logger.info(vals['commencement_business'])
-            commencement_business = vals['commencement_business']
-            annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),'|',('validity_stop','>=',commencement_business),'&',('validity_start','=',False),('validity_stop','=',False)])
-            _logger.info(annual_leave_type)
-        except:
-            _logger.info("An exception occurred")                                  
-        rtn = super(HrEmployee,self).create(vals)
-        return rtn 
+    # @api.model
+    # def create(self,vals):
+    #     try:   
+    #         _logger.info("---------------------------")
+    #         _logger.info(vals['commencement_business'])
+    #         commencement_business = vals['commencement_business']
+    #         annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),'|',('validity_stop','>=',commencement_business),'&',('validity_start','=',False),('validity_stop','=',False)])
+    #         _logger.info(annual_leave_type)
+    #         for annual in annual_leave_type:
+    #             annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('holiday_status_id','=',annual.id),('state','=','validate')])
+
+                
+    #     except:
+    #         _logger.info("An exception occurred")                                  
+    #     rtn = super(HrEmployee,self).create(vals)
+    #     return rtn 
 
 
