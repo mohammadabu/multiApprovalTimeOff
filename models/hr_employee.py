@@ -14,7 +14,7 @@ class HrEmployee(models.Model):
 
 
     @api.model
-    def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
+    def getLeaveDate(self,commencement_business,validity_start,validity_stop,number_of_days):
         return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
 
     @api.model
@@ -34,7 +34,7 @@ class HrEmployee(models.Model):
                         _logger.info("By Company")
                         if vals['company_id'] != False:
                             if allocation.mode_company_id.id == vals['company_id']:
-                                number_of_days = self.getLeaveDate(commencement_business,annual.validity_start,annual.validity_stop,allocation.number_of_days)
+                                number_of_days = self.getLeaveDate(self,commencement_business,annual.validity_start,annual.validity_stop,allocation.number_of_days)
                                 _logger.info(commencement_business)
                                 _logger.info(annual.validity_start)
                                 _logger.info(annual.validity_stop)
