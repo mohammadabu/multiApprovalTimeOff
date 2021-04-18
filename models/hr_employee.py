@@ -45,7 +45,8 @@ class HrEmployee(models.Model):
                                     "interval_unit":allocation.interval_unit,
                                     "holiday_type":"employee",
                                     "employee_id":rtn.id,
-                                    "number_of_days_display":allocation.number_of_days_display
+                                    "number_of_days_display":allocation.number_of_days_display,
+                                    "state":'validate'
                                 })
         except:
             _logger.info("An exception occurred")                                  
