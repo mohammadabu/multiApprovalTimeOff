@@ -14,7 +14,7 @@ class HrEmployee(models.Model):
 
 
     @api.model
-    def getLeaveDate(self,commencement_business,validity_start,validity_stop,number_of_days):
+    def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
         return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
 
     @api.model
