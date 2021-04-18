@@ -36,7 +36,7 @@ class HrEmployee(models.Model):
                                 _logger.info(rtn.id)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
-                                    "holiday_status_id":allocation.holiday_status_id,
+                                    "holiday_status_id":allocation.holiday_status_id.id,
                                     "allocation_type":allocation.allocation_type,
                                     "nextcall":allocation.nextcall,
                                     "number_per_interval":allocation.number_per_interval,
