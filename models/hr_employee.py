@@ -12,6 +12,11 @@ class HrEmployee(models.Model):
     _inherit = 'hr.employee'
     commencement_business = fields.Date("Date of commencement of business")
 
+
+    @api.model
+    def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
+        return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
+
     @api.model
     def create(self,vals):
         try: 
@@ -54,9 +59,4 @@ class HrEmployee(models.Model):
             _logger.info(inst)     
                                          
         return rtn 
-
-
-
-def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
-    return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
 
