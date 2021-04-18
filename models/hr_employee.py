@@ -30,7 +30,7 @@ class HrEmployee(models.Model):
                         _logger.info(vals['company_id'])
                         if vals['company_id'] != False:
                             _logger.info("By Company Not False")
-                            if allocation.mode_company_id == vals['company_id']:
+                            if allocation.mode_company_id.id == vals['company_id']:
                                 _logger.info("By Company Add ")
                                 _logger.info(vals['id'])
                                 self.env['hr.leave.allocation'].sudo().create({
