@@ -34,11 +34,15 @@ class HrEmployee(models.Model):
                         _logger.info("By Company")
                         if vals['company_id'] != False:
                             if allocation.mode_company_id.id == vals['company_id']:
-                                number_of_days = self.getLeaveDate(self,commencement_business,annual.validity_start,annual.validity_stop,allocation.number_of_days)
+                                all_number_of_days = allocation.number_of_days
+                                validity_stop = annual.validity_stop
+                                validity_start = annual.validity_start
+                                number_of_days = self.getLeaveDate(commencement_business,validity_start,validity_stop,all_number_of_days)
                                 _logger.info(commencement_business)
-                                _logger.info(annual.validity_start)
-                                _logger.info(annual.validity_stop)
-                                _logger.info(allocation.number_of_days)
+                                _logger.info(validity_start)
+                                _logger.info(validity_stop)
+                                _logger.info(all_number_of_days)
+                                _logger.info(number_of_days)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id.id,
