@@ -25,6 +25,7 @@ class HrEmployee(models.Model):
             for annual in annual_leave_type:
                 annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('holiday_status_id','=',annual.id),('state','=','validate')])
                 for allocation in annual_leave_allocation:
+                    _logger.info("Start Add")
                     # By Company
                     if allocation.holiday_type == "company":
                         _logger.info("By Company")
