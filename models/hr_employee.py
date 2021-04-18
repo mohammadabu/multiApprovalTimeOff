@@ -26,7 +26,7 @@ class HrEmployee(models.Model):
         _logger.info(type(commencement_business))
         statment_1 = (validity_stop - commencement_business).days
         statment_2 = (validity_stop - validity_start).days  
-        return (statment_1 / statment_2) * number_of_days
+        return round(((statment_1 / statment_2) * number_of_days),1)
 
     @api.model
     def create(self,vals):
