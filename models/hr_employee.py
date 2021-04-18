@@ -16,8 +16,8 @@ class HrEmployee(models.Model):
     def create(self,vals):
         try:   
             _logger.info("---------------------------")
-            _logger.info(vals['commencement_business'])
-            _logger.info(vals['company_id'])
+            # _logger.info(vals['commencement_business'])
+            # _logger.info(vals['company_id'])
             commencement_business = vals['commencement_business']
             annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),'|',('validity_stop','>=',commencement_business),'&',('validity_start','=',False),('validity_stop','=',False)])
             _logger.info(annual_leave_type)
@@ -26,8 +26,13 @@ class HrEmployee(models.Model):
                 for allocation in annual_leave_allocation:
                     # By Company
                     if allocation.holiday_type == "company":
+                        _logger.info("By Company")
+                        _logger.info(vals['company_id'])
                         if vals['company_id'] != False:
+                            _logger.info("By Company Not False")
                             if allocation.mode_company_id == vals['company_id']:
+                                _logger.info("By Company Add ")
+                                _logger.info(vals['id'])
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id,
