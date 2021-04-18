@@ -46,6 +46,7 @@ class HrEmployee(models.Model):
                                     "holiday_type":"employee",
                                     "employee_id":rtn.id,
                                     "number_of_days_display":allocation.number_of_days_display,
+                                    "number_of_days":allocation.number_of_days,
                                     "state":'validate'
                                 })
         except:
