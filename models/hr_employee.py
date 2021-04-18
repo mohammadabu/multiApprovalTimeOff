@@ -14,7 +14,8 @@ class HrEmployee(models.Model):
 
     @api.model
     def create(self,vals):
-        try:   
+        try: 
+            rtn = super(HrEmployee,self).create(vals)  
             _logger.info("---------------------------")
             # _logger.info(vals['commencement_business'])
             # _logger.info(vals['company_id'])
@@ -32,7 +33,7 @@ class HrEmployee(models.Model):
                             _logger.info("By Company Not False")
                             if allocation.mode_company_id.id == vals['company_id']:
                                 _logger.info("By Company Add ")
-                                _logger.info(vals['id'])
+                                _logger.info(rtn)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id,
@@ -43,12 +44,11 @@ class HrEmployee(models.Model):
                                     "interval_number":allocation.interval_number,
                                     "interval_unit":allocation.interval_unit,
                                     "holiday_type":"employee",
-                                    "employee_id":vals['id'],
+                                    "employee_id":rtn,
                                     "number_of_days_display":allocation.number_of_days_display
                                 })
         except:
             _logger.info("An exception occurred")                                  
-        rtn = super(HrEmployee,self).create(vals)
         return rtn 
 
 
