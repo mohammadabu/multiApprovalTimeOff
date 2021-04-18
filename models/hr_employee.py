@@ -26,9 +26,21 @@ class HrEmployee(models.Model):
                 for allocation in annual_leave_allocation:
                     # By Company
                     if allocation.holiday_type == "company":
-                        print('sdadsa')
-                 							
-                
+                        if vals['company_id'] != False:
+                            if allocation.mode_company_id == vals['company_id']:
+                                self.env['hr.leave.allocation'].sudo().create({
+                                    "name":allocation.name,
+                                    "holiday_status_id":allocation.holiday_status_id,
+                                    "allocation_type":allocation.allocation_type,
+                                    "nextcall":allocation.nextcall,
+                                    "number_per_interval":allocation.number_per_interval,
+                                    "unit_per_interval":allocation.unit_per_interval,
+                                    "interval_number":allocation.interval_number,
+                                    "interval_unit":allocation.interval_unit,
+                                    "holiday_type":"employee",
+                                    "employee_id":vals['id'],
+                                    "number_of_days_display":allocation.number_of_days_display
+                                })
         except:
             _logger.info("An exception occurred")                                  
         rtn = super(HrEmployee,self).create(vals)
