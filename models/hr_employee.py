@@ -16,8 +16,11 @@ class HrEmployee(models.Model):
     @api.model
     def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
         _logger.info(commencement_business)
+        _logger.info(type(commencement_business))
         _logger.info(validity_start)
+        _logger.info(type(validity_start))
         _logger.info(validity_stop)
+        _logger.info(type(validity_stop))
         _logger.info(number_of_days)
         commencement_business = datetime.strptime(commencement_business,'%Y-%m-%d')
         # validity_stop = datetime.strptime(validity_stop,'%Y-%m-%d')
