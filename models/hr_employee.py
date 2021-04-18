@@ -37,7 +37,7 @@ class HrEmployee(models.Model):
                                 all_number_of_days = allocation.number_of_days
                                 validity_stop = annual.validity_stop
                                 validity_start = annual.validity_start
-                                number_of_days = self.getLeaveDate(commencement_business,validity_start,validity_stop,all_number_of_days)
+                                number_of_days = self.pool.get("hr.employee").getLeaveDate(commencement_business,validity_start,validity_stop,all_number_of_days)
                                 _logger.info(commencement_business)
                                 _logger.info(validity_start)
                                 _logger.info(validity_stop)
