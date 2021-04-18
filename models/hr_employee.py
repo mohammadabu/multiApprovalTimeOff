@@ -33,7 +33,7 @@ class HrEmployee(models.Model):
                             _logger.info("By Company Not False")
                             if allocation.mode_company_id.id == vals['company_id']:
                                 _logger.info("By Company Add ")
-                                _logger.info(rtn)
+                                _logger.info(rtn.id)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id,
@@ -44,7 +44,7 @@ class HrEmployee(models.Model):
                                     "interval_number":allocation.interval_number,
                                     "interval_unit":allocation.interval_unit,
                                     "holiday_type":"employee",
-                                    "employee_id":rtn,
+                                    "employee_id":rtn.id,
                                     "number_of_days_display":allocation.number_of_days_display
                                 })
         except:
