@@ -24,7 +24,7 @@ class HrEmployee(models.Model):
         _logger.info(number_of_days)
         commencement_business = datetime.strptime(commencement_business,'%Y-%m-%d')
         # validity_stop = datetime.strptime(validity_stop,'%Y-%m-%d')
-        statment_1 = commencement_business - validity_stop
+        # statment_1 = commencement_business - validity_stop
 
         # statment_2 = validity_start - validity_stop
         # return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
