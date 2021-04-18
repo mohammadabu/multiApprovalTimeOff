@@ -50,8 +50,10 @@ class HrEmployee(models.Model):
                                     "number_of_days":allocation.number_of_days,
                                     "state":'validate'
                                 })
-        except:
-            _logger.info("An exception occurred")                                  
+        except Exception as inst:
+            _logger.info("An exception occurred") 
+            _logger.info(inst)     
+                                         
         return rtn 
 
 
