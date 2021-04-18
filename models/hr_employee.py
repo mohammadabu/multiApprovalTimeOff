@@ -18,7 +18,9 @@ class HrEmployee(models.Model):
         _logger.info(commencement_business)
         _logger.info(validity_start)
         _logger.info(validity_stop)
-        _logger.info(all_number_of_days)
+        _logger.info(number_of_days)
+        statment_1 = commencement_business - validity_stop
+        statment_2 = validity_start - validity_stop
         # return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
 
     @api.model
@@ -42,11 +44,6 @@ class HrEmployee(models.Model):
                                 validity_stop = annual.validity_stop
                                 validity_start = annual.validity_start
                                 number_of_days = self.pool.get("hr.employee").getLeaveDate(commencement_business,validity_start,validity_stop,all_number_of_days)
-                                # _logger.info(commencement_business)
-                                # _logger.info(validity_start)
-                                # _logger.info(validity_stop)
-                                # _logger.info(all_number_of_days)
-                                # _logger.info(number_of_days)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id.id,
