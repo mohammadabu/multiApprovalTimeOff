@@ -21,20 +21,19 @@ class HrEmployee(models.Model):
             # _logger.info(vals['company_id'])
             commencement_business = vals['commencement_business']
             annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),'|',('validity_stop','>=',commencement_business),'&',('validity_start','=',False),('validity_stop','=',False)])
-            _logger.info(annual_leave_type)
             for annual in annual_leave_type:
                 annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('holiday_status_id','=',annual.id),('state','=','validate')])
                 for allocation in annual_leave_allocation:
-                    _logger.info("Start Add")
                     # By Company
                     if allocation.holiday_type == "company":
                         _logger.info("By Company")
-                        _logger.info(vals['company_id'])
                         if vals['company_id'] != False:
-                            _logger.info("By Company Not False")
                             if allocation.mode_company_id.id == vals['company_id']:
-                                _logger.info("By Company Add ")
-                                _logger.info(rtn.id)
+                                number_of_days = self.getLeaveDate(commencement_business,annual.validity_start,annual.validity_stop,allocation.number_of_days)
+                                _logger.info(commencement_business)
+                                _logger.info(annual.validity_start)
+                                _logger.info(annual.validity_stop)
+                                _logger.info(allocation.number_of_days)
                                 self.env['hr.leave.allocation'].sudo().create({
                                     "name":allocation.name,
                                     "holiday_status_id":allocation.holiday_status_id.id,
@@ -49,7 +48,6 @@ class HrEmployee(models.Model):
                                     "number_of_days_display":allocation.number_of_days_display,
                                     "number_of_days":allocation.number_of_days,
                                     "state":'validate',
-                                    "create_date":commencement_business
                                 })
         except Exception as inst:
             _logger.info("An exception occurred") 
@@ -57,4 +55,8 @@ class HrEmployee(models.Model):
                                          
         return rtn 
 
+
+
+def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
+    return ((commencement_business - validity_stop) / (validity_start - validity_stop)) * number_of_days
 
