@@ -138,6 +138,19 @@ class HrLeave(models.Model):
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
         requests assigned to current user """
+        self.env['hr.leave.allocation'].sudo().create({
+            "name":"Carry Forword from annual leave 2020 (10) days",
+            "holiday_status_id":11,
+            "allocation_type":"regular",
+            "holiday_type":"employee",
+            "employee_id":1,
+            "number_of_days_display":10,
+            "number_of_days":10,
+            "state":'validate',
+        })
+
+
+
         current_uid = self.env.uid
         hr_holidays = self.env['hr.leave'].sudo().search([('state','=','confirm'),('holiday_status_id.validation_type','=','multi')])
         li = []
