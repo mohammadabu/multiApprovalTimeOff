@@ -45,7 +45,7 @@ class HrEmployee(models.Model):
                     validity_stop = annual.validity_stop
                     validity_start = annual.validity_start
                     # By Company
-                    if (allocation.holiday_type == "company":
+                    if allocation.holiday_type == "company":
                         _logger.info("By Company")
                         if vals['company_id'] != False:
                             if allocation.mode_company_id.id == vals['company_id']:
