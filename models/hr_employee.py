@@ -23,7 +23,10 @@ class HrEmployee(models.Model):
         _logger.info(validity_start)
         _logger.info(statment_1)
         _logger.info(statment_2)
-        return round(((statment_1 / statment_2) * number_of_days),1)
+        if commencement_business <= validity_start:
+            return number_of_days
+        else:     
+            return round(((statment_1 / statment_2) * number_of_days),1)
 
     @api.model
     def create(self,vals):
