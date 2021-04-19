@@ -18,6 +18,11 @@ class HrEmployee(models.Model):
         commencement_business = datetime.strptime(commencement_business,'%Y-%m-%d').date()
         statment_1 = (validity_stop - commencement_business).days
         statment_2 = (validity_stop - validity_start).days  
+        _logger.info(commencement_business)
+        _logger.info(validity_stop)
+        _logger.info(validity_start)
+        _logger.info(statment_1)
+        _logger.info(statment_2)
         return round(((statment_1 / statment_2) * number_of_days),1)
 
     @api.model
@@ -30,6 +35,7 @@ class HrEmployee(models.Model):
             commencement_business = vals['commencement_business']
             annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('finished_carry_froword','=',False),'|',('validity_stop','>=',commencement_business),'&',('validity_start','=',False),('validity_stop','=',False)])
             for annual in annual_leave_type:
+                _logger.info(annual.name)
                 annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('holiday_status_id','=',annual.id),('state','=','validate')])
                 for allocation in annual_leave_allocation:
                     # By Company
@@ -53,7 +59,7 @@ class HrEmployee(models.Model):
                                     "interval_unit":allocation.interval_unit,
                                     "holiday_type":"employee",
                                     "employee_id":rtn.id,
-                                    "number_of_days_display":allocation.number_of_days_display,
+                                    "number_of_days_display":number_of_days,
                                     "number_of_days":number_of_days,
                                     "state":'validate',
                                 })
