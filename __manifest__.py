@@ -10,7 +10,7 @@
         'wizards/create_leave_comment.xml',
         'wizards/create_refuse_comment.xml',
         'views/leave_request.xml',
-        'views/hr_employee.xml',
+        # 'views/hr_employee.xml',
         'data/mail_template.xml',
         'security/ir.model.access.csv',
         'security/security.xml'
