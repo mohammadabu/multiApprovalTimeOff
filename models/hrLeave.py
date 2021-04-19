@@ -102,7 +102,7 @@ class HrLeave(models.Model):
                             all_emails = str(self.employee_id.parent_id.user_id.login)
 
                 # manager of manager(i will check it)
-                if l2.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
+                if l.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
                     if self.employee_id.parent_id.parent_id.id != False: 
                         if self.employee_id.parent_id.parent_id.user_id.id != False:
                             if all_emails != "":
