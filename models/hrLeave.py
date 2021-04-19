@@ -34,6 +34,13 @@ class HrLeave(models.Model):
                         if self.employee_id.parent_id.user_id.id == current_uid:
                             self.is_approved_user_id= True
                             break
+                # manager of manager(i will check it)
+                if l2.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
+                    if self.employee_id.parent_id.parent_id.id != False: 
+                        if self.employee_id.parent_id.parent_id.user_id.id != False:
+                            if self.employee_id.parent_id.parent_id.user_id.id == current_uid:
+                                self.is_approved_user_id= True
+                                break            
                 # position
                 if  l2.validators_type == 'position':
                     employees = self.env['hr.employee'].sudo().search([('multi_job_id','in',l2.holiday_validators_position.id)])
@@ -93,6 +100,16 @@ class HrLeave(models.Model):
                                 all_emails = all_emails + "," +str(self.employee_id.parent_id.user_id.login)
                         else:
                             all_emails = str(self.employee_id.parent_id.user_id.login)
+
+                # manager of manager(i will check it)
+                if l2.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
+                    if self.employee_id.parent_id.parent_id.id != False: 
+                        if self.employee_id.parent_id.parent_id.user_id.id != False:
+                            if all_emails != "":
+                                if str(self.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
+                                    all_emails = all_emails + "," +str(self.employee_id.parent_id.parent_id.user_id.login)
+                            else:
+                                all_emails = str(self.employee_id.parent_id.parent_id.user_id.login)
                 # position
                 if  l.validators_type == 'position':
                     employees = self.env['hr.employee'].sudo().search([('multi_job_id','in',l.holiday_validators_position.id)])
@@ -131,6 +148,14 @@ class HrLeave(models.Model):
                     if l.employee_id.parent_id.user_id.id != False:
                         if l.employee_id.parent_id.user_id.id == current_uid:
                             li.append(l.id)
+
+                # manager of manager(i will check it)
+                if l2.validators_type == 'manager_of_manager' and l.employee_id.parent_id.id != False:
+                    if l.employee_id.parent_id.parent_id.id != False: 
+                        if l.employee_id.parent_id.parent_id.user_id.id != False:
+                            if l.employee_id.parent_id.parent_id.user_id.id == current_uid:
+                                li.append(l.id)
+                            
                 # position
                 if  l2.validators_type == 'position':
                     employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',l2.holiday_validators_position.id),('user_id','=',current_uid)])

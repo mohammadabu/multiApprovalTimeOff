@@ -13,6 +13,7 @@ class LeaveValidationStatus(models.Model):
     validators_type = fields.Selection(
         [
             ('direct_manager','Direct Manager'),
+            ('manager_of_manager','Manager of manager'),
             ('position','Position'),
             ('user','User')
         ]
