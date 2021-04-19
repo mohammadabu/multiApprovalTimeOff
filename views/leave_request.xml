@@ -19,7 +19,7 @@
                             <tree string="Users" editable="bottom">
                                 <field name="validators_type" required="1"/>
                                 <field name="holiday_validators_user" string="Users validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),'|',('validators_type','=','position'),('validators_type','=','manager_of_manager')],'required': ['&amp;',('validators_type','!=','direct_manager'),'&amp;',('validators_type','!=','position'),('validators_type','!=','manager_of_manager')]}"/>
-                                <field name="holiday_validators_position" string="Position validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),('validators_type','=','user')],'required': [('validators_type','!=','direct_manager'),('validators_type','!=','user')]}"/>
+                                <field name="holiday_validators_position" string="Position validators" attrs="{'invisible': ['|',('validators_type','=','direct_manager'),'|',('validators_type','=','user'),('validators_type','=','manager_of_manager')],'required': ['&amp;',('validators_type','!=','direct_manager'),'&amp;',('validators_type','!=','user'),('validators_type','!=','manager_of_manager')]}"/>
                                 <field name="approval"/>
                             </tree>
                         </field>
