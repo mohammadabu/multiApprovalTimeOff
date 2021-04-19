@@ -68,7 +68,44 @@ class CreateLeaveComment(models.TransientModel):
                         if str(str_pos) not in notApproved:
                             notApproved = notApproved + "" + str(str_pos)
                     else:
-                        notApproved = str(str_pos)         
+                        notApproved = str(str_pos) 
+            if user_obj.validators_type == 'manager_of_manager' and user.employee_id.parent_id.id != False:
+                if user.employee_id.parent_id.parent_id.id != False: 
+                    if user_obj.validation_status == True:
+                        str_pos = "The <b>Manager of manager</b> approved your time off request<br>" 
+                        if approved != "":
+                            if str(str_pos) not in approved:
+                                approved = approved + "" + str(str_pos)
+                        else:
+                            approved = str(str_pos)
+                    if user.employee_id.parent_id.parent_id.user_id.id != False:
+                        if all_emails != "":
+                            if str(user.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
+                                all_emails = all_emails + "," + str(user.employee_id.parent_id.parent_id.user_id.login)
+                        else:
+                            all_emails = str(user.employee_id.parent_id.parent_id.user_id.login)
+
+                        if user.employee_id.parent_id.parent_id.user_id.id == current_uid:
+                            validation_obj = user.leave_approvals.search(
+                                    [('id', '=', user_obj.id)])
+                            validation_obj.validation_status = True
+                            validation_obj.validation_refused = False
+                            validation_obj.leave_comments = comment
+                            clicked = 1
+                            str_pos = "The <b>Manager of manager</b> approved your time off request<br>" 
+                            if approved != "":
+                                if str(str_pos) not in approved:
+                                    approved = approved + "" + str(str_pos)
+                            else:
+                                approved = str(str_pos)
+                    if  clicked != 1 and user_obj.validation_status != True:
+                        str_pos = "- Manager of manager<br>"
+                        if notApproved != "":
+                            if str(str_pos) not in notApproved:
+                                notApproved = notApproved + "" + str(str_pos)
+                        else:
+                            notApproved = str(str_pos) 
+
             if  user_obj.validators_type == 'position':
                 employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',user_obj.holiday_validators_position.id),('user_id','=',current_uid)])
                 employee_email = self.env['hr.employee'].sudo().search([('multi_job_id','in',user_obj.holiday_validators_position.id)])
