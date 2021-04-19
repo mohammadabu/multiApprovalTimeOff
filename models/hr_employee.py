@@ -15,15 +15,7 @@ class HrEmployee(models.Model):
 
     @api.model
     def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
-        _logger.info(commencement_business)
-        _logger.info(type(commencement_business))
-        _logger.info(validity_start)
-        _logger.info(type(validity_start))
-        _logger.info(validity_stop)
-        _logger.info(type(validity_stop))
-        _logger.info(number_of_days)
         commencement_business = datetime.strptime(commencement_business,'%Y-%m-%d').date()
-        _logger.info(type(commencement_business))
         statment_1 = (validity_stop - commencement_business).days
         statment_2 = (validity_stop - validity_start).days  
         return round(((statment_1 / statment_2) * number_of_days),1)
@@ -62,7 +54,7 @@ class HrEmployee(models.Model):
                                     "holiday_type":"employee",
                                     "employee_id":rtn.id,
                                     "number_of_days_display":allocation.number_of_days_display,
-                                    "number_of_days":allocation.number_of_days,
+                                    "number_of_days":number_of_days,
                                     "state":'validate',
                                 })
         except Exception as inst:
