@@ -80,6 +80,12 @@
                         />
                         
             </xpath>
+             <xpath expr="//field[@name='request_unit_half']" position="attributes">
+                <attribute name="attrs">{'invisible': []}</attribute>      
+            </xpath>
+            <xpath expr="//label[@for='request_unit_half']" position="attributes">
+                <attribute name="attrs">{'invisible': []}</attribute>      
+            </xpath>
         </field>
     </record>
     <record id="open_holidays_to_approve" model="ir.actions.server">
