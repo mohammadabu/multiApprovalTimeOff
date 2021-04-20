@@ -12,6 +12,7 @@
         'views/leave_request.xml',
         'views/hr_employee.xml',
         'data/mail_template.xml',
+        'data/cron.xml',
         'security/ir.model.access.csv',
         'security/security.xml'
     ],
