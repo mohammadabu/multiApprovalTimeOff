@@ -12,6 +12,12 @@ class HrAllocations(models.Model):
     _inherit = 'hr.leave.allocation'
     allocation_carry_forword = fields.Boolean()
     
+    def custom_leave_for_this_year(self):     
+        _logger.info("---------------------------")
+        current_date = datetime.now().date()
+        annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('allocation_carry_forword','=',False)])
+        for annual in annual_leave_allocation:
+            annual_leave_type = self.env['hr.leave.type'].sudo().search([('allocation_carry_forword','=',False)])
 
     # @api.model
     # def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
