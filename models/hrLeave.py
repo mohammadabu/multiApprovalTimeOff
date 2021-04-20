@@ -222,6 +222,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":9.75,
         #     "number_of_days":9.75,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True  
         # })
         # # Mahmoud Tash
         # self.env['hr.leave.allocation'].sudo().create({
@@ -233,6 +234,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Mohammed Alaa Borgi
         # self.env['hr.leave.allocation'].sudo().create({
@@ -244,6 +246,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":4.44,
         #     "number_of_days":4.44,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Muzaffer Azam - Mohammed Muzaffer
         # self.env['hr.leave.allocation'].sudo().create({
@@ -255,6 +258,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":7.75,
         #     "number_of_days":7.75,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Mohamed Habib
         # self.env['hr.leave.allocation'].sudo().create({
@@ -266,6 +270,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Shariful Islam
         # self.env['hr.leave.allocation'].sudo().create({
@@ -277,6 +282,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":21.88,
         #     "number_of_days":21.88,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Basel Alhamich
         # self.env['hr.leave.allocation'].sudo().create({
@@ -288,6 +294,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":2.7,
         #     "number_of_days":2.7,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # # Emad Abuzahra 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -299,6 +306,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":9.31,
         #     "number_of_days":9.31,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Mohammed Abdullah 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -310,6 +318,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Mohammed Akram 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -321,6 +330,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":6.7,
         #     "number_of_days":6.7,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Ahmad Ibrahim Wadi Shahin 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -332,6 +342,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":5.49,
         #     "number_of_days":5.49,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Malek Jamal Rebhi Ahmad 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -343,6 +354,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":5.49,
         #     "number_of_days":5.49,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Basel Altamimi 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -354,6 +366,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Ahmed Abosaleh 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -365,6 +378,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":1.76,
         #     "number_of_days":1.76,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Sultan Alhaqqas 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -376,6 +390,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Elias Gabour  
         # self.env['hr.leave.allocation'].sudo().create({
@@ -387,6 +402,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":2.2,
         #     "number_of_days":2.2,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Abdulrahman Altamimi 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -398,6 +414,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":-0.8,
         #     "number_of_days":-0.8,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Tammam Madarati 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -409,6 +426,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Ahmed Elayyan 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -420,6 +438,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":-0.95,
         #     "number_of_days":-0.95,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Qusai 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -431,6 +450,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Ramzi Madhi 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -442,6 +462,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         #  Sonny Tesorero Tapia 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -453,6 +474,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Eduard Nelson Akim 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -464,6 +486,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":10,
         #     "number_of_days":10,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Osama Alsuliman 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -475,6 +498,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":6.76,
         #     "number_of_days":6.76,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Moawia Jallad 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -486,6 +510,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":8.26,
         #     "number_of_days":8.26,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Jacinto Dugan Dimaun  
         # self.env['hr.leave.allocation'].sudo().create({
@@ -497,6 +522,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":8.26,
         #     "number_of_days":8.26,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Faris Badhris 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -508,6 +534,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":6.84,
         #     "number_of_days":6.84,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Ibrahim Alsebai 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -519,6 +546,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":3.62,
         #     "number_of_days":3.62,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Mohammed Lafeer 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -530,6 +558,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":5.48,
         #     "number_of_days":5.48,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Mohammed Hamood 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -541,6 +570,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":6.15,
         #     "number_of_days":6.15,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Rashed Aldawsari 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -552,6 +582,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":6.57,
         #     "number_of_days":6.57,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
         # #  Fahad Alhamazani 
         # self.env['hr.leave.allocation'].sudo().create({
@@ -563,6 +594,7 @@ class HrLeave(models.Model):
         #     "number_of_days_display":3.62,
         #     "number_of_days":3.62,
         #     "state":'validate',
+        #     "allocation_carry_forword" :True
         # })
 
         
