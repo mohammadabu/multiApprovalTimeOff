@@ -136,32 +136,6 @@ class HrLeave(models.Model):
             self.leave_approvals = li
             self.all_emails = all_emails
 
-    def print_response(response):
-  new_response = {}
-  for report in response.get('reports', []):
-    columnHeader = report.get('columnHeader', {})
-    dimensionHeaders = columnHeader.get('dimensions', [])
-    metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
-    count = 0
-    for row in report.get('data', {}).get('rows', []):
-      dimensions = row.get('dimensions', [])
-      dateRangeValues = row.get('metrics', [])
-      new_response[count] = {}
-      new_response[count]['dimension'] = {}
-      for header, dimension in zip(dimensionHeaders, dimensions):
-        new_response[count]['dimension'][header] = dimension
-        # print(header + ': ', dimension)
-
-      for i, values in enumerate(dateRangeValues):
-        # print('Date range:', str(i))
-        new_response[count]['metric'] = {}
-        for metricHeader, value in zip(metricHeaders, values.get('values')):
-          new_response[count]['metric'][metricHeader.get('name')] = value
-          # print(metricHeader.get('name') + ':', value)
-      count = count + 1    
-    return  new_response     
-
-
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
         requests assigned to current user """
