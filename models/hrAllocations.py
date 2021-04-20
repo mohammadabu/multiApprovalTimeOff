@@ -17,7 +17,7 @@ class HrAllocations(models.Model):
         current_date = datetime.now().date()
         annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('allocation_carry_forword','=',False),('parent_id','!=',False)])
         for annual in annual_leave_allocation:
-            annual_leave_type = self.env['hr.leave.type'].sudo().search([('id','=',annual.holiday_status_id.id)])
+            annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('id','=',annual.holiday_status_id.id),'&',('validity_start','!=',False),('validity_stop','!=',False)])
             _logger.info("------------------------")
             _logger.info(annual_leave_type.name)
             _logger.info(annual_leave_type.validity_start)
