@@ -150,181 +150,181 @@ class HrLeave(models.Model):
         #     "state":'validate',
         # })
         # Abdulaziz Alegeiry
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":125,
-            "number_of_days_display":9.75,
-            "number_of_days":9.75,
-            "state":'validate',
-        })
-        # Mahmoud Tash
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":120,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        # Mohammed Alaa Borgi
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":115,
-            "number_of_days_display":4.44,
-            "number_of_days":4.44,
-            "state":'validate',
-        })
-        # Muzaffer Azam - Mohammed Muzaffer
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":103,
-            "number_of_days_display":7.75,
-            "number_of_days":7.75,
-            "state":'validate',
-        })
-        # Mohamed Habib
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":100,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        # Shariful Islam
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":97,
-            "number_of_days_display":21.88,
-            "number_of_days":21.88,
-            "state":'validate',
-        })
-        # Basel Alhamich
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":93,
-            "number_of_days_display":2.7,
-            "number_of_days":2.7,
-            "state":'validate',
-        })
-        # Emad Abuzahra 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":7,
-            "number_of_days_display":9.31,
-            "number_of_days":9.31,
-            "state":'validate',
-        })
-        #  Mohammed Abdullah 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":89,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        #  Mohammed Akram 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":146,
-            "number_of_days_display":6.7,
-            "number_of_days":6.7,
-            "state":'validate',
-        })
-        #  Ahmad Ibrahim Wadi Shahin 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":139,
-            "number_of_days_display":5.49,
-            "number_of_days":5.49,
-            "state":'validate',
-        })
-        #  Malek Jamal Rebhi Ahmad 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":145,
-            "number_of_days_display":5.49,
-            "number_of_days":5.49,
-            "state":'validate',
-        })
-        #  Basel Altamimi 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":144,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        #  Ahmed Abosaleh 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":140,
-            "number_of_days_display":1.76,
-            "number_of_days":1.76,
-            "state":'validate',
-        })
-        #  Sultan Alhaqqas 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":149,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        #  Elias Gabour  
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":151,
-            "number_of_days_display":2.2,
-            "number_of_days":2.2,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":125,
+        #     "number_of_days_display":9.75,
+        #     "number_of_days":9.75,
+        #     "state":'validate',
+        # })
+        # # Mahmoud Tash
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":120,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # # Mohammed Alaa Borgi
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":115,
+        #     "number_of_days_display":4.44,
+        #     "number_of_days":4.44,
+        #     "state":'validate',
+        # })
+        # # Muzaffer Azam - Mohammed Muzaffer
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":103,
+        #     "number_of_days_display":7.75,
+        #     "number_of_days":7.75,
+        #     "state":'validate',
+        # })
+        # # Mohamed Habib
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":100,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # # Shariful Islam
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":97,
+        #     "number_of_days_display":21.88,
+        #     "number_of_days":21.88,
+        #     "state":'validate',
+        # })
+        # # Basel Alhamich
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":93,
+        #     "number_of_days_display":2.7,
+        #     "number_of_days":2.7,
+        #     "state":'validate',
+        # })
+        # # Emad Abuzahra 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":7,
+        #     "number_of_days_display":9.31,
+        #     "number_of_days":9.31,
+        #     "state":'validate',
+        # })
+        # #  Mohammed Abdullah 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":89,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # #  Mohammed Akram 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":146,
+        #     "number_of_days_display":6.7,
+        #     "number_of_days":6.7,
+        #     "state":'validate',
+        # })
+        # #  Ahmad Ibrahim Wadi Shahin 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":139,
+        #     "number_of_days_display":5.49,
+        #     "number_of_days":5.49,
+        #     "state":'validate',
+        # })
+        # #  Malek Jamal Rebhi Ahmad 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":145,
+        #     "number_of_days_display":5.49,
+        #     "number_of_days":5.49,
+        #     "state":'validate',
+        # })
+        # #  Basel Altamimi 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":144,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # #  Ahmed Abosaleh 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":140,
+        #     "number_of_days_display":1.76,
+        #     "number_of_days":1.76,
+        #     "state":'validate',
+        # })
+        # #  Sultan Alhaqqas 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":149,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # #  Elias Gabour  
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":151,
+        #     "number_of_days_display":2.2,
+        #     "number_of_days":2.2,
+        #     "state":'validate',
+        # })
         #  Abdulrahman Altamimi 
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (9.75) days",
@@ -337,16 +337,16 @@ class HrLeave(models.Model):
         #     "state":'validate',
         # })
         #  Tammam Madarati 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":153,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":153,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
         #  Ahmed Elayyan 
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (9.75) days",
@@ -359,148 +359,148 @@ class HrLeave(models.Model):
         #     "state":'validate',
         # })
         #  Qusai 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":158,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":158,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
         #  Ramzi Madhi 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":161,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":161,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
         #  Sonny Tesorero Tapia 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":155,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        #  Eduard Nelson Akim 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":162,
-            "number_of_days_display":10,
-            "number_of_days":10,
-            "state":'validate',
-        })
-        #  Osama Alsuliman 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":163,
-            "number_of_days_display":6.76,
-            "number_of_days":6.76,
-            "state":'validate',
-        })
-        #  Moawia Jallad 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":166,
-            "number_of_days_display":8.26,
-            "number_of_days":8.26,
-            "state":'validate',
-        })
-        #  Jacinto Dugan Dimaun  
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":171,
-            "number_of_days_display":8.26,
-            "number_of_days":8.26,
-            "state":'validate',
-        })
-        #  Faris Badhris 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":172,
-            "number_of_days_display":6.84,
-            "number_of_days":6.84,
-            "state":'validate',
-        })
-        #  Ibrahim Alsebai 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":178,
-            "number_of_days_display":3.62,
-            "number_of_days":3.62,
-            "state":'validate',
-        })
-        #  Mohammed Lafeer 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":182,
-            "number_of_days_display":5.48,
-            "number_of_days":5.48,
-            "state":'validate',
-        })
-        #  Mohammed Hamood 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":176,
-            "number_of_days_display":6.15,
-            "number_of_days":6.15,
-            "state":'validate',
-        })
-        #  Rashed Aldawsari 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":174,
-            "number_of_days_display":6.57,
-            "number_of_days":6.57,
-            "state":'validate',
-        })
-        #  Fahad Alhamazani 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":200,
-            "number_of_days_display":3.62,
-            "number_of_days":3.62,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":155,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # #  Eduard Nelson Akim 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":162,
+        #     "number_of_days_display":10,
+        #     "number_of_days":10,
+        #     "state":'validate',
+        # })
+        # #  Osama Alsuliman 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":163,
+        #     "number_of_days_display":6.76,
+        #     "number_of_days":6.76,
+        #     "state":'validate',
+        # })
+        # #  Moawia Jallad 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":166,
+        #     "number_of_days_display":8.26,
+        #     "number_of_days":8.26,
+        #     "state":'validate',
+        # })
+        # #  Jacinto Dugan Dimaun  
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":171,
+        #     "number_of_days_display":8.26,
+        #     "number_of_days":8.26,
+        #     "state":'validate',
+        # })
+        # #  Faris Badhris 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":172,
+        #     "number_of_days_display":6.84,
+        #     "number_of_days":6.84,
+        #     "state":'validate',
+        # })
+        # #  Ibrahim Alsebai 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":178,
+        #     "number_of_days_display":3.62,
+        #     "number_of_days":3.62,
+        #     "state":'validate',
+        # })
+        # #  Mohammed Lafeer 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":182,
+        #     "number_of_days_display":5.48,
+        #     "number_of_days":5.48,
+        #     "state":'validate',
+        # })
+        # #  Mohammed Hamood 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":176,
+        #     "number_of_days_display":6.15,
+        #     "number_of_days":6.15,
+        #     "state":'validate',
+        # })
+        # #  Rashed Aldawsari 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":174,
+        #     "number_of_days_display":6.57,
+        #     "number_of_days":6.57,
+        #     "state":'validate',
+        # })
+        # #  Fahad Alhamazani 
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":200,
+        #     "number_of_days_display":3.62,
+        #     "number_of_days":3.62,
+        #     "state":'validate',
+        # })
 
 
         
