@@ -149,6 +149,7 @@ class HrLeave(models.Model):
         #     "number_of_days":10,
         #     "state":'validate',
         # })
+        self.env['hr.employee'].sudo().write({"id":1,"commencement_business":'2020-01-01'})
         # Abdulaziz Alegeiry
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (9.75) days",
@@ -162,7 +163,7 @@ class HrLeave(models.Model):
         # })
         # # Mahmoud Tash
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
