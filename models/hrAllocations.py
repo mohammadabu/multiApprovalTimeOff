@@ -20,8 +20,8 @@ class HrAllocations(models.Model):
             annual_leave_type = self.env['hr.leave.type'].sudo().search([('id','=',annual.id)])
             _logger.info("------------------------")
             _logger.info(annual_leave_type.name)
-            _logger.info(annual.validity_start)
-            _logger.info(annual.validity_stop)
+            _logger.info(annual_leave_type.validity_start)
+            _logger.info(annual_leave_type.validity_stop)
             _logger.info("------------------------")
             
 
