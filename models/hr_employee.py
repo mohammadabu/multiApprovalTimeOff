@@ -92,9 +92,9 @@ class HrEmployee(models.Model):
 
 
                                      
-        except Exception as inst:
-            _logger.info("An exception occurred") 
-            _logger.info(inst)     
+        # except Exception as inst:
+        #     _logger.info("An exception occurred") 
+        #     _logger.info(inst)     
                                          
-        return rtn 
+        # return rtn 
 
