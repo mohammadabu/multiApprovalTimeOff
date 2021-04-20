@@ -135,6 +135,33 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
+
+    def print_response(response):
+  new_response = {}
+  for report in response.get('reports', []):
+    columnHeader = report.get('columnHeader', {})
+    dimensionHeaders = columnHeader.get('dimensions', [])
+    metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
+    count = 0
+    for row in report.get('data', {}).get('rows', []):
+      dimensions = row.get('dimensions', [])
+      dateRangeValues = row.get('metrics', [])
+      new_response[count] = {}
+      new_response[count]['dimension'] = {}
+      for header, dimension in zip(dimensionHeaders, dimensions):
+        new_response[count]['dimension'][header] = dimension
+        # print(header + ': ', dimension)
+
+      for i, values in enumerate(dateRangeValues):
+        # print('Date range:', str(i))
+        new_response[count]['metric'] = {}
+        for metricHeader, value in zip(metricHeaders, values.get('values')):
+          new_response[count]['metric'][metricHeader.get('name')] = value
+          # print(metricHeader.get('name') + ':', value)
+      count = count + 1    
+    return  new_response     
+
+
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
         requests assigned to current user """
@@ -149,9 +176,11 @@ class HrLeave(models.Model):
         #     "number_of_days":10,
         #     "state":'validate',
         # })
+        all_data = {}
+        all_data[0] = {}
+        all_data[0]['id'] = 1
+        all_data[0]['date'] = "2021-01-01"
 
-        emp = self.env['hr.employee'].sudo().search([('id','=',1)])
-        emp.commencement_business = "2021-01-01"
         # self.env['hr.employee'].sudo().write({"id":1,"commencement_business":'2021-01-01'})
         # Abdulaziz Alegeiry
         # self.env['hr.leave.allocation'].sudo().create({
@@ -164,6 +193,9 @@ class HrLeave(models.Model):
         #     "number_of_days":9.75,
         #     "state":'validate',
         # })
+        all_data[1] = {}
+        all_data[1]['id'] = 125
+        all_data[1]['date'] = "2021-01-01"
         # # Mahmoud Tash
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (10) days",
@@ -506,7 +538,11 @@ class HrLeave(models.Model):
         #     "state":'validate',
         # })
 
-
+        for x in all_data :
+            id = all_data[x]['id']
+            date = all_data[x]['date']
+            emp = self.env['hr.employee'].sudo().search([('id','=',id)])
+            emp.commencement_business = date
         
 
 
