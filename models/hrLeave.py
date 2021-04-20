@@ -326,16 +326,16 @@ class HrLeave(models.Model):
             "state":'validate',
         })
         #  Abdulrahman Altamimi 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":138,
-            "number_of_days_display":-0.8,
-            "number_of_days":-0.8,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":138,
+        #     "number_of_days_display":-0.8,
+        #     "number_of_days":-0.8,
+        #     "state":'validate',
+        # })
         #  Tammam Madarati 
         self.env['hr.leave.allocation'].sudo().create({
             "name":"Carry Forword from annual leave 2020 (9.75) days",
@@ -348,16 +348,16 @@ class HrLeave(models.Model):
             "state":'validate',
         })
         #  Ahmed Elayyan 
-        self.env['hr.leave.allocation'].sudo().create({
-            "name":"Carry Forword from annual leave 2020 (9.75) days",
-            "holiday_status_id":11,
-            "allocation_type":"regular",
-            "holiday_type":"employee",
-            "employee_id":141,
-            "number_of_days_display":-0.95,
-            "number_of_days":-0.95,
-            "state":'validate',
-        })
+        # self.env['hr.leave.allocation'].sudo().create({
+        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "holiday_status_id":11,
+        #     "allocation_type":"regular",
+        #     "holiday_type":"employee",
+        #     "employee_id":141,
+        #     "number_of_days_display":-0.95,
+        #     "number_of_days":-0.95,
+        #     "state":'validate',
+        # })
         #  Qusai 
         self.env['hr.leave.allocation'].sudo().create({
             "name":"Carry Forword from annual leave 2020 (9.75) days",
