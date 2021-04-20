@@ -80,10 +80,16 @@
                         />
                         
             </xpath>
-             <xpath expr="//field[@name='request_unit_half']" position="attributes">
+            <xpath expr="//field[@name='request_unit_half']" position="attributes">
                 <attribute name="attrs">{'invisible': []}</attribute>      
             </xpath>
             <xpath expr="//label[@for='request_unit_half']" position="attributes">
+                <attribute name="attrs">{'invisible': []}</attribute>      
+            </xpath>
+            <xpath expr="//field[@name='request_unit_hours']" position="attributes">
+                <attribute name="attrs">{'invisible': []}</attribute>      
+            </xpath>
+            <xpath expr="//label[@for='request_unit_hours']" position="attributes">
                 <attribute name="attrs">{'invisible': []}</attribute>      
             </xpath>
         </field>
