@@ -34,7 +34,7 @@
         <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='department_id']" position="after">
-                <field name="carry_forword"/>
+                <field name="allocation_carry_forword"/>
             </xpath>
         </field>
     </record>

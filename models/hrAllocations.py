@@ -10,7 +10,7 @@ from pytz import timezone, UTC
 
 class HrAllocations(models.Model):
     _inherit = 'hr.leave.allocation'
-    carry_forword = fields.Boolean()
+    allocation_carry_forword = fields.Boolean()
     
 
     # @api.model
