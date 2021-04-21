@@ -24,9 +24,6 @@ class HrLeave(models.Model):
     all_emails = fields.Text()
     approved_emails = fields.Text()
     notApproved_emails = fields.Text()
-    @api.model
-    def compute_display_certificate_required(self):
-        self.certificate_required = self.holiday_status_id.certificate_required
     certificate_required = fields.Boolean()
     def _check_is_approved_user_id(self):
         current_uid = self.env.uid
@@ -146,7 +143,11 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
-            self.certificate_required = self.holiday_status_id.certificate_required
+            time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',time_off_type.id)])
+            _logger.info("-------------log1111-------------")
+            _logger.info(time_off_type)
+            _logger.info(time_off_type.certificate_required)
+            self.certificate_required = time_off_type.certificate_required
 
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
