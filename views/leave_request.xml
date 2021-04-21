@@ -49,10 +49,10 @@
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="after">
-                <label for="attach_certificate"  attrs="{'invisible': [('certificate_required','=', False)],'required': [('certificate_required', '=', True)]}"/>
-                <div attrs="{'invisible': [('certificate_required','=', False)],'required': [('certificate_required', '=', True)]}">
+                <label for="attach_certificate"  attrs="{'invisible': [('certificate_required','=', False)]}"/>
+                <div attrs="{'invisible': [('certificate_required','=', False)]}">
                     <div>
-                        <field name="attach_certificate"  class="oe_inline" />
+                        <field name="attach_certificate" attrs="{'required': [('certificate_required', '=', True)]}"  class="oe_inline" />
                     </div>
                 </div>
                 <field name="certificate_required" invisible="1"/>
