@@ -85,7 +85,7 @@ class HrLeave(models.Model):
     #                 # break
     #         if not(l2.approval != True or (l2.approval == True and l2.validation_status == True)): 
     #             break        
-    @api.onchange('holiday_status_id')
+    @api.onchange('holiday_status_id','number_of_days')
     def add_validators(self):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
