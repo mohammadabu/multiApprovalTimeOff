@@ -36,6 +36,7 @@ class HrAllocations(models.Model):
                     _logger.info(validity_stop)
                     _logger.info(statment_1)
                     _logger.info(statment_2)
+                    _logger.info(number_of_days)
                     _logger.info(total)
                     _logger.info("------------------------")
             
