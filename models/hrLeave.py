@@ -27,7 +27,7 @@ class HrLeave(models.Model):
     @api.model
     def compute_display_certificate_required(self):
         self.certificate_required = self.holiday_status_id.certificate_required
-    certificate_required = fields.Boolean(compute=compute_display_certificate_required)
+    certificate_required = fields.Boolean()
     def _check_is_approved_user_id(self):
         current_uid = self.env.uid
         self.is_approved_user_id= False
@@ -146,6 +146,7 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
+            self.certificate_required = self.holiday_status_id.certificate_required
 
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
