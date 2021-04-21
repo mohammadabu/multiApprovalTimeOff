@@ -10,5 +10,10 @@ from pytz import timezone, UTC
 
 class AttachMedicalCertificate(models.Model):
     _inherit = 'hr.leave.type'
-    certificate_required = fields.Binary("Date of commencement of business")
+    # certificate_required = fields.Binary("Date of commencement of business")
+    certificate_required = fields.Boolean()
     
+
+class UploadAttachMedicalCertificate(models.Model):
+    _inherit = 'hr.leave'
+    attach_certificate = fields.Binary()
