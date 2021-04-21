@@ -50,7 +50,7 @@
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="attach_certificate" />
+                <field name="attach_certificate" string="attach_certificate" />
             </xpath>
             <xpath expr="//group[last()]" position="after">
                 <field name="all_emails" invisible="1" />
