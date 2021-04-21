@@ -97,7 +97,7 @@ class HrLeave(models.Model):
                 _logger.info("-------------log-------------")
                 _logger.info(float(l.exceptions))
                 _logger.info(self.number_of_days)
-                if l.exceptions == False or float(l.exceptions) > self.number_of_days:
+                if l.exceptions == False or self.number_of_days > float(l.exceptions):
                     # direct manager
                     if l.validators_type == 'direct_manager' and self.employee_id.parent_id.id != False:
                         if self.employee_id.parent_id.user_id.id != False:
