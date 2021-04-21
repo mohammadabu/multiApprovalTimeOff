@@ -52,8 +52,10 @@
             <xpath expr="//field[@name='user_id']" position="after">
                 <!-- <label for="attach_certificate" />
                 <field name="attach_certificate"/> -->
-                <label for="attach_certificate" attrs="{'invisible': [('holiday_status_id.certificate_required','=', False)],'required': [('holiday_status_id.certificate_required', '=', True)]}" />
-                <div attrs="{'invisible': [('holiday_status_id.certificate_required','=', False)],'required': [('holiday_status_id.certificate_required', '=', True)]}">
+
+                <!-- holiday_status_id.certificate_required -->
+                <label for="attach_certificate" attrs="{'invisible': [('holiday_status_id.validation_type','=', False)],'required': [('holiday_status_id.validation_type', '=', True)]}" />
+                <div attrs="{'invisible': [('holiday_status_id.validation_type','=', False)],'required': [('holiday_status_id.validation_type', '=', True)]}">
                     <div>
                         <field name="attach_certificate"  class="oe_inline"/>
                     </div>
