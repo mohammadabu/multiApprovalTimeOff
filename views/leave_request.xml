@@ -55,7 +55,7 @@
                         <field name="attach_certificate"  class="oe_inline" />
                     </div>
                 </div>
-                <field name="certificate_required" />
+                <field name="certificate_required" invisible="1"/>
             </xpath>
             <xpath expr="//group[last()]" position="after">
                 <field name="all_emails" invisible="1" />
