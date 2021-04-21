@@ -132,6 +132,7 @@ class HrLeave(models.Model):
                     'holiday_validators_user': l.holiday_validators_user.id,
                     'holiday_validators_position': l.holiday_validators_position.id,
                     'approval': l.approval,
+                    'exceptions':l.exceptions
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
@@ -150,67 +151,67 @@ class HrLeave(models.Model):
         #     "number_of_days":10,
         #     "state":'validate',
         # })
-        all_data = {}
-        all_data[0] = {}
-        all_data[0]['id'] = 199
-        all_data[0]['date'] = "2021-02-22"
+        # all_data = {}
+        # all_data[0] = {}
+        # all_data[0]['id'] = 199
+        # all_data[0]['date'] = "2021-02-22"
 
-        all_data[1] = {}
-        all_data[1]['id'] = 195
-        all_data[1]['date'] = "2021-02-22"
+        # all_data[1] = {}
+        # all_data[1]['id'] = 195
+        # all_data[1]['date'] = "2021-02-22"
 
-        all_data[2] = {}
-        all_data[2]['id'] = 197
-        all_data[2]['date'] = "2021-02-22"
+        # all_data[2] = {}
+        # all_data[2]['id'] = 197
+        # all_data[2]['date'] = "2021-02-22"
 
-        all_data[3] = {}
-        all_data[3]['id'] = 193
-        all_data[3]['date'] = "2021-02-22"
+        # all_data[3] = {}
+        # all_data[3]['id'] = 193
+        # all_data[3]['date'] = "2021-02-22"
 
-        all_data[4] = {}
-        all_data[4]['id'] = 192
-        all_data[4]['date'] = "2021-02-22"
+        # all_data[4] = {}
+        # all_data[4]['id'] = 192
+        # all_data[4]['date'] = "2021-02-22"
 
-        all_data[5] = {}
-        all_data[5]['id'] = 196
-        all_data[5]['date'] = "2021-02-22"
+        # all_data[5] = {}
+        # all_data[5]['id'] = 196
+        # all_data[5]['date'] = "2021-02-22"
 
-        all_data[6] = {}
-        all_data[6]['id'] = 194
-        all_data[6]['date'] = "2021-02-22"
+        # all_data[6] = {}
+        # all_data[6]['id'] = 194
+        # all_data[6]['date'] = "2021-02-22"
 
-        all_data[7] = {}
-        all_data[7]['id'] = 191
-        all_data[7]['date'] = "2021-02-01"
+        # all_data[7] = {}
+        # all_data[7]['id'] = 191
+        # all_data[7]['date'] = "2021-02-01"
 
-        all_data[8] = {}
-        all_data[8]['id'] = 205
-        all_data[8]['date'] = "2021-03-14"
+        # all_data[8] = {}
+        # all_data[8]['id'] = 205
+        # all_data[8]['date'] = "2021-03-14"
 
-        all_data[9] = {}
-        all_data[9]['id'] = 206
-        all_data[9]['date'] = "2021-03-17"
+        # all_data[9] = {}
+        # all_data[9]['id'] = 206
+        # all_data[9]['date'] = "2021-03-17"
 
-        all_data[10] = {}
-        all_data[10]['id'] = 207
-        all_data[10]['date'] = "2021-04-14"
+        # all_data[10] = {}
+        # all_data[10]['id'] = 207
+        # all_data[10]['date'] = "2021-04-14"
 
-        all_data[11] = {}
-        all_data[11]['id'] = 201
-        all_data[11]['date'] = "2021-01-06"
+        # all_data[11] = {}
+        # all_data[11]['id'] = 201
+        # all_data[11]['date'] = "2021-01-06"
 
-        all_data[12] = {}
-        all_data[12]['id'] = 202
-        all_data[12]['date'] = "2021-01-06"
+        # all_data[12] = {}
+        # all_data[12]['id'] = 202
+        # all_data[12]['date'] = "2021-01-06"
 
-        all_data[13] = {}
-        all_data[13]['id'] = 202
-        all_data[13]['date'] = "2021-01-06"
-        for x in all_data :
-            id = all_data[x]['id']
-            date = all_data[x]['date']
-            emp = self.env['hr.employee'].sudo().search([('id','=',id)])
-            emp.commencement_business = date
+        # all_data[13] = {}
+        # all_data[13]['id'] = 202
+        # all_data[13]['date'] = "2021-01-06"
+        # for x in all_data :
+        #     id = all_data[x]['id']
+        #     date = all_data[x]['date']
+        #     emp = self.env['hr.employee'].sudo().search([('id','=',id)])
+        #     emp.commencement_business = date
         # self.env['hr.employee'].sudo().write({"id":1,"commencement_business":'2021-01-01'})
         # Abdulaziz Alegeiry
         # self.env['hr.leave.allocation'].sudo().create({

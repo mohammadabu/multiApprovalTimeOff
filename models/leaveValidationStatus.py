@@ -50,7 +50,7 @@ class LeaveValidationStatus(models.Model):
         ]
     )
 
-    @api.onchange('validators_type','holiday_validators_user','holiday_validators_position','approval')
+    @api.onchange('validators_type','holiday_validators_user','holiday_validators_position','approval','exceptions')
     def prevent_change(self):
         raise UserError(_(
             "Changing leave validators is not permitted. You can only change "
