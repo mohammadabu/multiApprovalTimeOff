@@ -143,7 +143,7 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
-        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',time_off_type.id)])
+        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         _logger.info("-------------log1111-------------")
         _logger.info(time_off_type)
         _logger.info(time_off_type.certificate_required)
