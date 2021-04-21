@@ -110,7 +110,7 @@ class CreateLeaveComment(models.TransientModel):
                                 validation_obj.validation_status = False
                                 validation_obj.validation_refused = True
                                 validation_obj.leave_comments = comment
-                if  user_obj.validators_type == 'position':
+                if user_obj.validators_type == 'position':
                     employee = self.env['hr.employee'].sudo().search([('multi_job_id','in',user_obj.holiday_validators_position.id),('user_id','=',current_uid)])
                     if len(employee) > 0:
 
@@ -120,15 +120,14 @@ class CreateLeaveComment(models.TransientModel):
                         validation_obj.validation_status = False
                         validation_obj.validation_refused = True
                         validation_obj.leave_comments = comment
-                if  user_obj.validators_type == 'user':
-                if user_obj.holiday_validators_user.id == current_uid:
+                if user_obj.validators_type == 'user':
+                    if user_obj.holiday_validators_user.id == current_uid:
 
-                    validation_obj = leave_self.leave_approvals.search(
-                                [('id', '=', user_obj.id)])
-
-                    validation_obj.validation_status = False
-                    validation_obj.validation_refused = True
-                    validation_obj.leave_comments = comment
+                        validation_obj = leave_self.leave_approvals.search(
+                                    [('id', '=', user_obj.id)])
+                        validation_obj.validation_status = False
+                        validation_obj.validation_refused = True
+                        validation_obj.leave_comments = comment
 
 
 
