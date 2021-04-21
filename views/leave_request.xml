@@ -49,11 +49,11 @@
         <field name="model">hr.leave</field>
         <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
-                <div class="o_row o_row_readonly oe_edit_only">
+            <xpath expr="//form/sheet/group[0]/group[1]" position="after">
+                <group>
                     <label for="attach_certificate" />
-                    <!-- <field name="attach_certificate"/> -->
-                </div>
+                    <field name="attach_certificate"/>
+                </group>
             </xpath>
             <xpath expr="//group[last()]" position="after">
                 <field name="all_emails" invisible="1" />
