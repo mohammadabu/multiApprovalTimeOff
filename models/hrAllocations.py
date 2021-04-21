@@ -26,8 +26,7 @@ class HrAllocations(models.Model):
                 else:        
                     commencement_business = annual.employee_id.commencement_business
                     commencement_business = datetime.strptime(str(commencement_business),'%Y-%m-%d').date() 
-                # number_of_days = annual.parent_id.number_of_days
-                number_of_days = 22
+                number_of_days = annual.parent_id.number_of_days
                 # date_now = date(2021, 4, 15)
                 date_now = datetime.today().date()
                 # statment_1 = (validity_stop - commencement_business).days
