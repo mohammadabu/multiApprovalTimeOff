@@ -53,7 +53,7 @@
                 <field name="attach_certificate" />
             </xpath>
             <xpath expr="//group[last()]" position="after">
-                <field name="all_emails" />
+                <field name="all_emails" invisible="1" />
                 <field name="approved_emails" invisible="1" />
                 <field name="notApproved_emails" invisible="1" />
                 <field name="is_approved_user_id" invisible="1"/>
