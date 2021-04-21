@@ -20,7 +20,7 @@ class HrAllocations(models.Model):
             if annual.employee_id != False:
                 if annual.employee_id.commencement_business != False:
                     commencement_business = annual.employee_id.commencement_business
-                    commencement_business = datetime.strptime(commencement_business,'%Y-%m-%d').date()
+                    commencement_business = datetime.strptime(str(commencement_business),'%Y-%m-%d').date()
                     validity_stop = annual_leave_type.validity_stop
                     statment_1 = (validity_stop - commencement_business).days
                     annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('id','=',annual.holiday_status_id.id),'&',('validity_start','!=',False),('validity_stop','!=',False)])
