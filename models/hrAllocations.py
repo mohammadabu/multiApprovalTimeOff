@@ -27,7 +27,7 @@ class HrAllocations(models.Model):
                     number_of_days = annual.parent_id.number_of_days
                     statment_1 = (validity_stop - commencement_business).days
                     statment_2 = (validity_stop - validity_start).days
-                    total =  number_of_days / 12 * (round((statment_1 / statment_2 * 12),9))
+                    total =  number_of_days / 12 * (round((statment_1 / statment_2 * 12),2))
                     _logger.info("------------------------")
                     _logger.info(annual.employee_id.name)
                     _logger.info(commencement_business)
@@ -37,7 +37,7 @@ class HrAllocations(models.Model):
                     _logger.info(statment_1)
                     _logger.info(statment_2)
                     _logger.info(number_of_days)
-                    _logger.info(round((statment_1 / statment_2 * 12),9))
+                    _logger.info(round((statment_1 / statment_2 * 12),2))
                     _logger.info(total)
                     _logger.info("------------------------")
             
