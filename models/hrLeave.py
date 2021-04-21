@@ -143,11 +143,11 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
-            time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',time_off_type.id)])
-            _logger.info("-------------log1111-------------")
-            _logger.info(time_off_type)
-            _logger.info(time_off_type.certificate_required)
-            self.certificate_required = time_off_type.certificate_required
+        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',time_off_type.id)])
+        _logger.info("-------------log1111-------------")
+        _logger.info(time_off_type)
+        _logger.info(time_off_type.certificate_required)
+        self.certificate_required = time_off_type.certificate_required
 
     def _get_approval_requests(self):
         """ Action for Approvals menu item to show approval
