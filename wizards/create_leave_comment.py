@@ -175,7 +175,12 @@ class CreateLeaveComment(models.TransientModel):
                 user.all_emails = all_emails        
                 user.approved_emails = approved
                 user.notApproved_emails = notApproved
-
+            else:
+                validation_obj = user.leave_approvals.search(
+                                    [('id', '=', user_obj.id)])
+                validation_obj.validation_status = True
+                validation_obj.validation_refused = False
+                validation_obj.leave_comments = ""
             holiday_status_id = user.holiday_status_id.id
             employee_id = user.employee_id.id
             request_date_from = user.request_date_from
@@ -234,7 +239,6 @@ class CreateLeaveComment(models.TransientModel):
 
     def cancel_comment(self):
         return {'type': 'ir.actions.act_window_close'}     
-
 
     def create_body_for_email(self,message,res_id):
         body_html = ''
