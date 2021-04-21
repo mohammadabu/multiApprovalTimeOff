@@ -25,9 +25,9 @@ class HrAllocations(models.Model):
                 validity_start = annual_leave_type.validity_start
                 if annual.employee_id.commencement_business == False:
                     commencement_business = validity_start
-                else:
-                    if annual.employee_id.commencement_business < validity_start:
-                        commencement_business = validity_start
+                # else:
+                #     if annual.employee_id.commencement_business < validity_start:
+                #         commencement_business = validity_start
                 number_of_days = annual.parent_id.number_of_days
                 statment_1 = (validity_stop - commencement_business).days
                 statment_2 = (validity_stop - validity_start).days
