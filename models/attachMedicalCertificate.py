@@ -16,4 +16,4 @@ class AttachMedicalCertificate(models.Model):
 
 class UploadAttachMedicalCertificate(models.Model):
     _inherit = 'hr.leave'
-    attach_certificate = fields.Binary(string="Attach Certificate")
+    attach_certificate = fields.Binary("Attach Certificate")
