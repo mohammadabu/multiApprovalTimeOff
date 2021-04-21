@@ -18,28 +18,29 @@ class HrAllocations(models.Model):
         annual_leave_allocation = self.env['hr.leave.allocation'].sudo().search([('allocation_carry_forword','=',False),('parent_id','!=',False)])
         for annual in annual_leave_allocation:
             if annual.employee_id != False:
-                if annual.employee_id.commencement_business != False:
-                    annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('id','=',annual.holiday_status_id.id),'&',('validity_start','!=',False),('validity_stop','!=',False)])
-                    commencement_business = annual.employee_id.commencement_business
-                    commencement_business = datetime.strptime(str(commencement_business),'%Y-%m-%d').date()
-                    validity_stop = annual_leave_type.validity_stop
-                    validity_start = annual_leave_type.validity_start
-                    number_of_days = annual.parent_id.number_of_days
-                    statment_1 = (validity_stop - commencement_business).days
-                    statment_2 = (validity_stop - validity_start).days
-                    total =  number_of_days / 12 * (statment_1 / statment_2 * 12)
-                    total = round(total,2)
-                    _logger.info("------------------------")
-                    _logger.info(annual.employee_id.name)
-                    _logger.info(commencement_business)
-                    _logger.info(annual_leave_type.name)
-                    _logger.info(annual_leave_type.validity_start)
-                    _logger.info(validity_stop)
-                    _logger.info(statment_1)
-                    _logger.info(statment_2)
-                    _logger.info(number_of_days)
-                    _logger.info(round(total,2))
-                    _logger.info("------------------------")
+                annual_leave_type = self.env['hr.leave.type'].sudo().search(['&',('id','=',annual.holiday_status_id.id),'&',('validity_start','!=',False),('validity_stop','!=',False)])
+                commencement_business = annual.employee_id.commencement_business
+                commencement_business = datetime.strptime(str(commencement_business),'%Y-%m-%d').date() 
+                validity_stop = annual_leave_type.validity_stop
+                validity_start = annual_leave_type.validity_start
+                if annual.employee_id.commencement_business == False or annual.employee_id.commencement_business < validity_start:
+                    commencement_business = validity_start
+                number_of_days = annual.parent_id.number_of_days
+                statment_1 = (validity_stop - commencement_business).days
+                statment_2 = (validity_stop - validity_start).days
+                total =  number_of_days / 12 * (statment_1 / statment_2 * 12)
+                total = round(total,2)
+                _logger.info("------------------------")
+                _logger.info(annual.employee_id.name)
+                _logger.info(commencement_business)
+                _logger.info(annual_leave_type.name)
+                _logger.info(annual_leave_type.validity_start)
+                _logger.info(validity_stop)
+                _logger.info(statment_1)
+                _logger.info(statment_2)
+                _logger.info(number_of_days)
+                _logger.info(round(total,2))
+                _logger.info("------------------------")
             
 
     # @api.model
