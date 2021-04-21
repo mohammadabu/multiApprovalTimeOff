@@ -31,7 +31,7 @@ class HrAllocations(models.Model):
                 date_now = date(2021, 4, 15)
                 # statment_1 = (validity_stop - commencement_business).days
                 statment_1 = (date_now - commencement_business).days
-                statment_2 = (validity_stop - validity_start).days
+                statment_2 = (validity_stop - validity_start).days + 1
                 total =  number_of_days / 12 * (statment_1 / statment_2 * 12)
                 total = round(total,2)
                 _logger.info("------------------------")
