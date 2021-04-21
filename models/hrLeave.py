@@ -92,7 +92,7 @@ class HrLeave(models.Model):
             all_emails = ""
             self.leave_approvals = [(5, 0, 0)]
             for l in self.holiday_status_id.leave_validators:
-                if l.exceptions == False or float(l.exceptions) > self.number_of_days
+                if l.exceptions == False or float(l.exceptions) > self.number_of_days:
                     # direct manager
                     if l.validators_type == 'direct_manager' and self.employee_id.parent_id.id != False:
                         if self.employee_id.parent_id.user_id.id != False:
