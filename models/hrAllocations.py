@@ -46,7 +46,8 @@ class HrAllocations(models.Model):
                 _logger.info(number_of_days)
                 _logger.info(round(total,2))
                 _logger.info("------------------------")
-            
+                annual.number_of_days = total
+                annual.number_of_days_display = total
 
     # @api.model
     # def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
