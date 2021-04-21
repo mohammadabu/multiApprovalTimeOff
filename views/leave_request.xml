@@ -27,7 +27,7 @@
                     </page>
                 </notebook>
             </xpath>
-            <xpath expr="//field[@name='validation_type']" position="after">
+            <xpath expr="//field[@name='responsible_id']" position="after">
                 <field name="certificate_required"/>
             </xpath>
         </field>
