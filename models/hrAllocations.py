@@ -24,6 +24,7 @@ class HrAllocations(models.Model):
                     commencement_business = datetime.strptime(str(commencement_business),'%Y-%m-%d').date()
                     validity_stop = annual_leave_type.validity_stop
                     statment_1 = (validity_stop - commencement_business).days
+                    statment_2 = (validity_stop - validity_start).days
                     _logger.info("------------------------")
                     _logger.info(annual.employee_id.name)
                     _logger.info(commencement_business)
@@ -31,6 +32,7 @@ class HrAllocations(models.Model):
                     _logger.info(annual_leave_type.validity_start)
                     _logger.info(validity_stop)
                     _logger.info(statment_1)
+                    _logger.info(statment_2)
                     _logger.info("------------------------")
             
 
