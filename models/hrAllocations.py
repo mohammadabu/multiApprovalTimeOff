@@ -29,7 +29,7 @@ class HrAllocations(models.Model):
                 # number_of_days = annual.parent_id.number_of_days
                 number_of_days = 22
                 # date_now = date(2021, 4, 15)
-                data_now = datetime.today().date()
+                date_now = datetime.today().date()
                 # statment_1 = (validity_stop - commencement_business).days
                 statment_1 = (date_now - commencement_business).days
                 statment_2 = (validity_stop - validity_start).days + 1
@@ -37,7 +37,7 @@ class HrAllocations(models.Model):
                 total = round(total,2)
                 _logger.info("------------------------")
                 _logger.info(annual.employee_id.name)
-                _logger.info(data_now)
+                _logger.info(date_now)
                 _logger.info(commencement_business)
                 _logger.info(annual_leave_type.name)
                 _logger.info(annual_leave_type.validity_start)
