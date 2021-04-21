@@ -27,6 +27,9 @@
                     </page>
                 </notebook>
             </xpath>
+            <xpath expr="//field[@name='validation_type']" position="after">
+                <field name="certificate_required" required="1" />
+            </xpath>
         </field>
     </record>
     <record id="custom_carry_forword_hr_leave_allocation_request" model="ir.ui.view">
