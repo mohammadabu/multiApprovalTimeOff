@@ -94,7 +94,7 @@ class HrLeave(models.Model):
         # 5/6/2021
         _logger.info("-------------yearsـofـservice-------------")
         date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
-        now = datetime.strptime(date.today(),'%Y-%m-%d').date()
+        now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
         _logger.info(date_joining)
         _logger.info(now)
         _logger.info(time_off_type.yearsـofـservice)
