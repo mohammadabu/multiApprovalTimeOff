@@ -91,8 +91,9 @@ class HrLeave(models.Model):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
         # 5/6/2021
-        raise UserError(_(
-                    'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
+        if self.yearsـofـservice == 0:
+            raise UserError(_(
+                        'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
         # 5/6/2021            
         if self.validation_type == "multi":
             li = []
