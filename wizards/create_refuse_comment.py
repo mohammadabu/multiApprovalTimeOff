@@ -66,7 +66,7 @@ class CreateLeaveComment(models.TransientModel):
         value = {
             'subject': 'Refused leave',
             'body_html': email_html,
-            'email_to': all_emails + "," + employee_login,
+            'email_to': employee_login,
             'email_cc': '',
             'auto_delete': False,
             'email_from': 'axs-sa.com',
