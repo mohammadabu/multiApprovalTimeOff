@@ -90,8 +90,9 @@ class HrLeave(models.Model):
     def add_validators(self):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
+        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         # 5/6/2021
-        if self.yearsـofـservice == 0:
+        if time_off_type.yearsـofـservice == 0:
             raise UserError(_(
                         'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
         # 5/6/2021            
@@ -148,7 +149,6 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
-        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         _logger.info("-------------log1111-------------")
         _logger.info(time_off_type)
         _logger.info(time_off_type.certificate_required)
