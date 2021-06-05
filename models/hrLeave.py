@@ -91,20 +91,20 @@ class HrLeave(models.Model):
     def add_validators(self):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
-        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
+        # time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         # 5/6/2021
-        _logger.info("-------------yearsـofـservice-------------")
-        date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
-        now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
-        difference_in_years = relativedelta(now, date_joining).years
-        yearsـofـservice = time_off_type.yearsـofـservice
-        _logger.info(difference_in_years)
-        _logger.info(time_off_type.yearsـofـservice)
-        _logger.info("-------------yearsـofـservice-------------")
-        if time_off_type.yearsـofـservice != 0:
-            if not(difference_in_years >= yearsـofـservice):
-                msg = ("You must have at least %s years in this company") % (yearsـofـservice)
-                raise UserError(msg) 
+        # _logger.info("-------------yearsـofـservice-------------")
+        # date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
+        # now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
+        # difference_in_years = relativedelta(now, date_joining).years
+        # yearsـofـservice = time_off_type.yearsـofـservice
+        # _logger.info(difference_in_years)
+        # _logger.info(time_off_type.yearsـofـservice)
+        # _logger.info("-------------yearsـofـservice-------------")
+        # if time_off_type.yearsـofـservice != 0:
+        #     if not(difference_in_years >= yearsـofـservice):
+        #         msg = ("You must have at least %s years in this company") % (yearsـofـservice)
+        #         raise UserError(msg) 
         # 5/6/2021            
         if self.validation_type == "multi":
             li = []
@@ -164,6 +164,7 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
+        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])    
         _logger.info("-------------log1111-------------")
         _logger.info(time_off_type)
         _logger.info(time_off_type.certificate_required)
