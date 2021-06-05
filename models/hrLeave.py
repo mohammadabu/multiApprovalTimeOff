@@ -3,6 +3,7 @@ from datetime import datetime, timedelta,date
 from odoo import models, api, fields, _
 from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.tools import email_split
+from dateutil.relativedelta import relativedelta
 import logging
 _logger = logging.getLogger(__name__)
 from pytz import timezone, UTC
@@ -97,8 +98,10 @@ class HrLeave(models.Model):
         now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
         _logger.info(date_joining)
         _logger.info(now)
-        total_years = (now - date_joining).years
-        _logger.info(total_years)
+        difference_in_years = relativedelta(now, date_joining).years
+
+        # total_years = (now - date_joining).years
+        _logger.info(difference_in_years)
         _logger.info(time_off_type.yearsـofـservice)
         _logger.info("-------------yearsـofـservice-------------")
         if time_off_type.yearsـofـservice == 0:
