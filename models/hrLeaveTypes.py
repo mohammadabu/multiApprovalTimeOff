@@ -17,7 +17,7 @@ class HrLeaveTypes(models.Model):
                                        string='Leave Validators', help="Leave validators")
 
     # 5/6/2021
-    yearsـofـservice = fields.Date()
+    yearsـofـservice = fields.Integer(string="Years of service") 
     # 5/6/2021 
 
     @api.onchange('validation_type')
