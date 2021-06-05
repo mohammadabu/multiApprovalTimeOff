@@ -90,6 +90,8 @@ class HrLeave(models.Model):
     def add_validators(self):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
+        raise UserError(_(
+                    'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
         if self.validation_type == "multi":
             li = []
             all_emails = ""
