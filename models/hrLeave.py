@@ -148,7 +148,7 @@ class HrLeave(models.Model):
                                     all_emails = str(employee.user_id.login)
                                 emails_count = 1    
                     #user
-                    if  l.validators_type == 'user' and and emails_count == 0:
+                    if  l.validators_type == 'user' and emails_count == 0:
                         if all_emails != "":
                             if str(l.holiday_validators_user.login) not in all_emails:
                                 all_emails = all_emails + ","+str(l.holiday_validators_user.login)
