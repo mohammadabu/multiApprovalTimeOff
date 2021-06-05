@@ -102,7 +102,7 @@ class HrLeave(models.Model):
         _logger.info(time_off_type.yearsـofـservice)
         _logger.info("-------------yearsـofـservice-------------")
         if time_off_type.yearsـofـservice != 0:
-            if !(difference_in_years >= yearsـofـservice):
+            if not(difference_in_years >= yearsـofـservice):
                 msg = ("You must have at least %s years in this company") % (yearsـofـservice)
                 raise UserError(msg) 
         # 5/6/2021            
