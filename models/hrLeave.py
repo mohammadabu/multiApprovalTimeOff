@@ -96,17 +96,15 @@ class HrLeave(models.Model):
         _logger.info("-------------yearsـofـservice-------------")
         date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
         now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
-        _logger.info(date_joining)
-        _logger.info(now)
         difference_in_years = relativedelta(now, date_joining).years
-
-        # total_years = (now - date_joining).years
+        yearsـofـservice = time_off_type.yearsـofـservice
         _logger.info(difference_in_years)
         _logger.info(time_off_type.yearsـofـservice)
         _logger.info("-------------yearsـofـservice-------------")
-        if time_off_type.yearsـofـservice == 0:
-            raise UserError(_(
-                        'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
+        if time_off_type.yearsـofـservice != 0:
+            if !(difference_in_years >= yearsـofـservice):
+                msg = ("You must have at least %s years in this company") % (yearsـofـservice)
+                raise UserError(msg) 
         # 5/6/2021            
         if self.validation_type == "multi":
             li = []
