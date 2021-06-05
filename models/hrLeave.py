@@ -92,6 +92,10 @@ class HrLeave(models.Model):
         when leave type is changed in leave request form """
         time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         # 5/6/2021
+        _logger.info("-------------yearsـofـservice-------------")
+        _logger.info(time_off_type.yearsـofـservice)
+        _logger.info(employee_id.date_joining)
+        _logger.info("-------------yearsـofـservice-------------")
         if time_off_type.yearsـofـservice == 0:
             raise UserError(_(
                         'Leave request must be confirmed ("To Approve") in order to approve it.sasasa')) 
