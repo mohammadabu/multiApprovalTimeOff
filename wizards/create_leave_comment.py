@@ -30,6 +30,7 @@ class CreateLeaveComment(models.TransientModel):
         number_of_days = ""
         res_id = ""
         message = ""
+        all_emails_after_approved = 0
         for user_obj in user.leave_approvals:
             if user_obj.exceptions == False or user.number_of_days > float(user_obj.exceptions): 
                 clicked = 0
@@ -44,11 +45,13 @@ class CreateLeaveComment(models.TransientModel):
                             approved = str(str_pos)
 
                     if user.employee_id.parent_id.user_id.id != False:
-                        if all_emails != "":
-                            if str(user.employee_id.parent_id.user_id.login) not in all_emails:
-                                all_emails = all_emails + "," + str(user.employee_id.parent_id.user_id.login)
-                        else:
-                            all_emails = str(user.employee_id.parent_id.user_id.login)
+                        if all_emails_after_approved == 1:
+                            if all_emails != "":
+                                if str(user.employee_id.parent_id.user_id.login) not in all_emails:
+                                    all_emails = all_emails + "," + str(user.employee_id.parent_id.user_id.login)
+                            else:
+                                all_emails = str(user.employee_id.parent_id.user_id.login)
+                            all_emails_after_approved = 0    
                         if user.employee_id.parent_id.user_id.id == current_uid:
                             validation_obj = user.leave_approvals.search(
                                     [('id', '=', user_obj.id)])
@@ -56,6 +59,7 @@ class CreateLeaveComment(models.TransientModel):
                             validation_obj.validation_refused = False
                             validation_obj.leave_comments = comment
                             clicked = 1
+                            all_emails_after_approved = 1
                             str_pos = "The <b>Direct Manager</b> approved your time off request<br>" 
                             if approved != "":
                                 if str(str_pos) not in approved:
@@ -80,11 +84,13 @@ class CreateLeaveComment(models.TransientModel):
                             else:
                                 approved = str(str_pos)
                         if user.employee_id.parent_id.parent_id.user_id.id != False:
-                            if all_emails != "":
-                                if str(user.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
-                                    all_emails = all_emails + "," + str(user.employee_id.parent_id.parent_id.user_id.login)
-                            else:
-                                all_emails = str(user.employee_id.parent_id.parent_id.user_id.login)
+                            if all_emails_after_approved == 1:
+                                if all_emails != "":
+                                    if str(user.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
+                                        all_emails = all_emails + "," + str(user.employee_id.parent_id.parent_id.user_id.login)
+                                else:
+                                    all_emails = str(user.employee_id.parent_id.parent_id.user_id.login)
+                                all_emails_after_approved = 0    
 
                             if user.employee_id.parent_id.parent_id.user_id.id == current_uid:
                                 validation_obj = user.leave_approvals.search(
@@ -93,6 +99,7 @@ class CreateLeaveComment(models.TransientModel):
                                 validation_obj.validation_refused = False
                                 validation_obj.leave_comments = comment
                                 clicked = 1
+                                all_emails_after_approved = 1
                                 str_pos = "The <b>Manager of manager</b> approved your time off request<br>" 
                                 if approved != "":
                                     if str(str_pos) not in approved:
@@ -118,11 +125,13 @@ class CreateLeaveComment(models.TransientModel):
                         else:
                             approved = str(str_pos)
                     for emp in employee_email:
-                        if all_emails != False:
-                            if str(emp.user_id.login) not in all_emails:
-                                all_emails = all_emails + "," +str(emp.user_id.login)
-                        else:
-                            all_emails = str(emp.user_id.login)
+                        if all_emails_after_approved == 1:
+                            if all_emails != False:
+                                if str(emp.user_id.login) not in all_emails:
+                                    all_emails = all_emails + "," +str(emp.user_id.login)
+                            else:
+                                all_emails = str(emp.user_id.login)
+                            all_emails_after_approved = 0    
                     if len(employee) > 0:
                         validation_obj = user.leave_approvals.search(
                                     [('id', '=', user_obj.id)])
@@ -130,6 +139,7 @@ class CreateLeaveComment(models.TransientModel):
                         validation_obj.validation_refused = False
                         validation_obj.leave_comments = comment
                         clicked = 1
+                        all_emails_after_approved = 1
                         str_pos = "The position <b>"+user_obj.holiday_validators_position.name+"</b> approved your time off request<br>"
                         if approved != "":
                             if str(str_pos) not in approved:
@@ -151,11 +161,13 @@ class CreateLeaveComment(models.TransientModel):
                                 approved = approved + "" + str(str_pos)
                         else:
                             approved = str(str_pos)
-                    if all_emails != "":
-                        if str(user_obj.holiday_validators_user.login) not in all_emails:
-                            all_emails = all_emails + "," +str(user_obj.holiday_validators_user.login)
-                    else:
-                        all_emails = str(user_obj.holiday_validators_user.login)
+                    if all_emails_after_approved == 1:        
+                        if all_emails != "":
+                            if str(user_obj.holiday_validators_user.login) not in all_emails:
+                                all_emails = all_emails + "," +str(user_obj.holiday_validators_user.login)
+                        else:
+                            all_emails = str(user_obj.holiday_validators_user.login)
+                        all_emails_after_approved = 0    
                     if user_obj.holiday_validators_user.id == current_uid:
                         validation_obj = user.leave_approvals.search(
                                     [('id', '=', user_obj.id)])
@@ -163,6 +175,7 @@ class CreateLeaveComment(models.TransientModel):
                         validation_obj.validation_refused = False
                         validation_obj.leave_comments = comment
                         clicked = 1
+                        all_emails_after_approved = 1
                     if  clicked != 1 and user_obj.validation_status != True:
                         str_pos = "- "+user_obj.holiday_validators_user.name+"<br>"
                         if notApproved != "":
