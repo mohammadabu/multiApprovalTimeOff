@@ -29,6 +29,7 @@
             </xpath>
             <xpath expr="//field[@name='responsible_id']" position="after">
                 <field name="certificate_required"/>
+                <field name="yearsـofـservice"/>
             </xpath>
         </field>
     </record>

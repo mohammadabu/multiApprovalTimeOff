@@ -16,6 +16,10 @@ class HrLeaveTypes(models.Model):
                                        'hr_holiday_status',
                                        string='Leave Validators', help="Leave validators")
 
+    # 5/6/2021
+     yearsـofـservice = fields.Date()
+    # 5/6/2021 
+
     @api.onchange('validation_type')
     def enable_multi_level_validation(self):
         """ Enabling the boolean field of multilevel validation"""
