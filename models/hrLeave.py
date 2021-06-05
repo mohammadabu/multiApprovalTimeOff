@@ -93,7 +93,7 @@ class HrLeave(models.Model):
         time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         # 5/6/2021
         _logger.info("-------------yearsـofـservice-------------")
-        date_joining = datetime.strptime(self.employee_id.date_joining,'%Y-%m-%d').date()
+        date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
         now = datetime.strptime(date.today(),'%Y-%m-%d').date()
         _logger.info(date_joining)
         _logger.info(now)
