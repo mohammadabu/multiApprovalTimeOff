@@ -110,6 +110,7 @@ class HrLeave(models.Model):
             li = []
             all_emails = ""
             self.leave_approvals = [(5, 0, 0)]
+            emails_count = 0
             for l in self.holiday_status_id.leave_validators:
                 _logger.info("-------------log-------------")
                 _logger.info(float(l.exceptions))
@@ -117,39 +118,43 @@ class HrLeave(models.Model):
                 if l.exceptions == False or self.number_of_days > float(l.exceptions):
                     # direct manager
                     if l.validators_type == 'direct_manager' and self.employee_id.parent_id.id != False:
-                        if self.employee_id.parent_id.user_id.id != False:
+                        if self.employee_id.parent_id.user_id.id != False and emails_count == 0:
                             if all_emails != "":
                                 if str(self.employee_id.parent_id.user_id.login) not in all_emails:
                                     all_emails = all_emails + "," +str(self.employee_id.parent_id.user_id.login)
                             else:
                                 all_emails = str(self.employee_id.parent_id.user_id.login)
+                            emails_count = 1    
 
                     # manager of manager(i will check it)
                     if l.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
-                        if self.employee_id.parent_id.parent_id.id != False: 
+                        if self.employee_id.parent_id.parent_id.id != False and emails_count == 0: 
                             if self.employee_id.parent_id.parent_id.user_id.id != False:
                                 if all_emails != "":
                                     if str(self.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
                                         all_emails = all_emails + "," +str(self.employee_id.parent_id.parent_id.user_id.login)
                                 else:
                                     all_emails = str(self.employee_id.parent_id.parent_id.user_id.login)
+                                emails_count = 1    
                     # position
                     if  l.validators_type == 'position':
                         employees = self.env['hr.employee'].sudo().search([('multi_job_id','in',l.holiday_validators_position.id)])
-                        if len(employees) > 0:
+                        if len(employees) > 0 and emails_count == 0:
                             for employee in employees:
                                 if all_emails != "":
                                     if str(employee.user_id.login) not in all_emails:
                                         all_emails = all_emails + "," +str(employee.user_id.login)
                                 else:
                                     all_emails = str(employee.user_id.login)
+                                emails_count = 1    
                     #user
-                    if  l.validators_type == 'user':
+                    if  l.validators_type == 'user' and and emails_count == 0:
                         if all_emails != "":
                             if str(l.holiday_validators_user.login) not in all_emails:
                                 all_emails = all_emails + ","+str(l.holiday_validators_user.login)
                         else:
                             all_emails = str(l.holiday_validators_user.login)
+                        emails_count = 1    
                 li.append((0, 0, {
                     'validators_type': l.validators_type,
                     'holiday_validators_user': l.holiday_validators_user.id,
