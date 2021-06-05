@@ -10,7 +10,7 @@ from pytz import timezone, UTC
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
-    commencement_business = fields.Date("Date of commencement of business")
+    # commencement_business = fields.Date("Date of commencement of business")
     
 
     # @api.model
