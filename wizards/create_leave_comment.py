@@ -124,14 +124,14 @@ class CreateLeaveComment(models.TransientModel):
                                 approved = approved + "" + str(str_pos)
                         else:
                             approved = str(str_pos)
-                    for emp in employee_email:
-                        if all_emails_after_approved == 1:
+                    if all_emails_after_approved == 1:        
+                        for emp in employee_email:
                             if all_emails != False:
                                 if str(emp.user_id.login) not in all_emails:
                                     all_emails = all_emails + "," +str(emp.user_id.login)
                             else:
                                 all_emails = str(emp.user_id.login)
-                            all_emails_after_approved = 0    
+                        all_emails_after_approved = 0        
                     if len(employee) > 0:
                         validation_obj = user.leave_approvals.search(
                                     [('id', '=', user_obj.id)])
@@ -267,7 +267,7 @@ class CreateLeaveComment(models.TransientModel):
         body_html +=                        message
         body_html +=                    '</p>'
         body_html +=                    '<p style="margin-top: 24px; margin-bottom: 16px;">'
-        body_html +=                        ('<a href="/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
+        body_html +=                        ('<a href="https://my.axs-sa.com/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
         body_html +=                            'View Leave'
         body_html +=                        '</a>'
         body_html +=                    '</p>'

@@ -66,7 +66,7 @@ class CreateLeaveComment(models.TransientModel):
         value = {
             'subject': 'Refused leave',
             'body_html': email_html,
-            'email_to': employee_login,
+            'email_to':  employee_login,
             'email_cc': '',
             'auto_delete': False,
             'email_from': 'axs-sa.com',
@@ -174,7 +174,7 @@ class CreateLeaveComment(models.TransientModel):
         body_html +=                        message
         body_html +=                    '</p>'
         body_html +=                    '<p style="margin-top: 24px; margin-bottom: 16px;">'
-        body_html +=                        ('<a href="/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
+        body_html +=                        ('<a href="https://my.axs-sa.com/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
         body_html +=                            'View Leave'
         body_html +=                        '</a>'
         body_html +=                    '</p>'

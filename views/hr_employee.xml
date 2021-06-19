@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="custom_hr_employee_commencement_business" model="ir.ui.view">
-        <field name="name">hr_employee_commencement_business</field>
+    <record id="custom_hr_employee_allocation_used_display" model="ir.ui.view">
+        <field name="name">custom_hr_employee_allocation_used_display</field>
         <field name="model">hr.employee</field>
-        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="inherit_id" ref="hr_holidays.view_employee_form_leave_inherit"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='work_location']" position="after">
-                <field name="commencement_business" required="1"/>
+            <xpath expr="//field[@name='allocation_used_display']" position="after">
+                <field name="allocation_used_display_1"  />
+            </xpath>
+            <xpath expr="//field[@name='allocation_used_display']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute> 
             </xpath>
         </field>
     </record>

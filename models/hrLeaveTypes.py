@@ -16,9 +16,7 @@ class HrLeaveTypes(models.Model):
                                        'hr_holiday_status',
                                        string='Leave Validators', help="Leave validators")
 
-    # 5/6/2021
-    yearsـofـservice = fields.Integer(string="Years of service") 
-    # 5/6/2021 
+    yearsـofـservice = fields.Integer(string="Years of service")                                   
 
     @api.onchange('validation_type')
     def enable_multi_level_validation(self):

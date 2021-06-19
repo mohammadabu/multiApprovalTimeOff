@@ -1,9 +1,9 @@
 import re
 from datetime import datetime, timedelta,date
+from dateutil.relativedelta import relativedelta
 from odoo import models, api, fields, _
 from odoo.exceptions import UserError, AccessError, ValidationError
 from odoo.tools import email_split
-from dateutil.relativedelta import relativedelta
 import logging
 _logger = logging.getLogger(__name__)
 from pytz import timezone, UTC
@@ -91,21 +91,24 @@ class HrLeave(models.Model):
     def add_validators(self):
         """ Update the tree view and add new validators
         when leave type is changed in leave request form """
-        # time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
+        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])
         # 5/6/2021
-        # _logger.info("-------------yearsـofـservice-------------")
-        # date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
-        # now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
-        # difference_in_years = relativedelta(now, date_joining).years
-        # yearsـofـservice = time_off_type.yearsـofـservice
-        # _logger.info(difference_in_years)
-        # _logger.info(time_off_type.yearsـofـservice)
-        # _logger.info("-------------yearsـofـservice-------------")
-        # if time_off_type.yearsـofـservice != 0:
-        #     if not(difference_in_years >= yearsـofـservice):
-        #         msg = ("You must have at least %s years in this company") % (yearsـofـservice)
-        #         raise UserError(msg) 
-        # 5/6/2021            
+        _logger.info("-------------yearsـofـservice-------------")
+        if self.employee_id.date_joining != False and time_off_type.yearsـofـservice != 0:
+            date_joining = datetime.strptime(str(self.employee_id.date_joining),'%Y-%m-%d').date()
+            now = datetime.strptime(str(date.today()),'%Y-%m-%d').date()
+            difference_in_years = relativedelta(now, date_joining).years
+            yearsـofـservice = time_off_type.yearsـofـservice
+            _logger.info(difference_in_years)
+            _logger.info(time_off_type.yearsـofـservice)
+            _logger.info("-------------yearsـofـservice-------------")
+            if not(difference_in_years >= yearsـofـservice):
+                msg = ("You must have at least %s years in this company") % (yearsـofـservice)
+                raise UserError(msg)
+        else:
+            if time_off_type.yearsـofـservice != 0:
+                raise UserError("Join date not found")
+        # 5/6/2021
         if self.validation_type == "multi":
             li = []
             all_emails = ""
@@ -128,8 +131,8 @@ class HrLeave(models.Model):
 
                     # manager of manager(i will check it)
                     if l.validators_type == 'manager_of_manager' and self.employee_id.parent_id.id != False:
-                        if self.employee_id.parent_id.parent_id.id != False and emails_count == 0: 
-                            if self.employee_id.parent_id.parent_id.user_id.id != False:
+                        if self.employee_id.parent_id.parent_id.id != False: 
+                            if self.employee_id.parent_id.parent_id.user_id.id != False and emails_count == 0:
                                 if all_emails != "":
                                     if str(self.employee_id.parent_id.parent_id.user_id.login) not in all_emails:
                                         all_emails = all_emails + "," +str(self.employee_id.parent_id.parent_id.user_id.login)
@@ -164,7 +167,6 @@ class HrLeave(models.Model):
                 }))
             self.leave_approvals = li
             self.all_emails = all_emails
-        time_off_type = self.env['hr.leave.type'].sudo().search([('id','=',self.holiday_status_id.id)])    
         _logger.info("-------------log1111-------------")
         _logger.info(time_off_type)
         _logger.info(time_off_type.certificate_required)
@@ -245,8 +247,7 @@ class HrLeave(models.Model):
         #     date = all_data[x]['date']
         #     emp = self.env['hr.employee'].sudo().search([('id','=',id)])
         #     emp.commencement_business = date
-        # self.env['hr.employee'].sudo().write({"id":1,"commencement_business":'2021-01-01'})
-        # Abdulaziz Alegeiry
+        # # Abdulaziz Alegeiry
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (9.75) days",
         #     "holiday_status_id":11,
@@ -258,7 +259,7 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True  
         # })
-        # # Mahmoud Tash
+        # # # Mahmoud Tash
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
@@ -270,7 +271,7 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Mohammed Alaa Borgi
+        # # # Mohammed Alaa Borgi
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (4.44) days",
         #     "holiday_status_id":11,
@@ -282,7 +283,7 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Muzaffer Azam - Mohammed Muzaffer
+        # # # Muzaffer Azam - Mohammed Muzaffer
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (7.75) days",
         #     "holiday_status_id":11,
@@ -294,7 +295,7 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Mohamed Habib
+        # # # Mohamed Habib
         # self.env['hr.leave.allocation'].sudo().create({
         #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
@@ -306,9 +307,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Shariful Islam
+        # # # Shariful Islam
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (21.88) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -318,9 +319,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Basel Alhamich
+        # # # Basel Alhamich
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (2.7) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -330,9 +331,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # # Emad Abuzahra 
+        # # # Emad Abuzahra 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (9.31) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -342,9 +343,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Mohammed Abdullah 
+        # # #  Mohammed Abdullah 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -354,9 +355,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Mohammed Akram 
+        # # #  Mohammed Akram 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (6.7) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -366,9 +367,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Ahmad Ibrahim Wadi Shahin 
+        # # #  Ahmad Ibrahim Wadi Shahin 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (5.49) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -378,9 +379,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Malek Jamal Rebhi Ahmad 
+        # # #  Malek Jamal Rebhi Ahmad 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (5.49) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -390,9 +391,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Basel Altamimi 
+        # # #  Basel Altamimi 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -402,9 +403,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Ahmed Abosaleh 
+        # # #  Ahmed Abosaleh 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (1.76) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -414,21 +415,21 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Sultan Alhaqqas 
+        # # #  Sultan Alhaqqas 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (3.23) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
         #     "employee_id":149,
-        #     "number_of_days_display":10,
-        #     "number_of_days":10,
+        #     "number_of_days_display":3.23,
+        #     "number_of_days":3.23,
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Elias Gabour  
+        # # #  Elias Gabour  
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (2.2) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -438,21 +439,21 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        #  Abdulrahman Altamimi 
+        # #  Abdulrahman Altamimi 
+        # # self.env['hr.leave.allocation'].sudo().create({
+        # #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        # #     "holiday_status_id":11,
+        # #     "allocation_type":"regular",
+        # #     "holiday_type":"employee",
+        # #     "employee_id":138,
+        # #     "number_of_days_display":-0.8,
+        # #     "number_of_days":-0.8,
+        # #     "state":'validate',
+        # #     "allocation_carry_forword" :True
+        # # })
+        # #  Tammam Madarati 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
-        #     "holiday_status_id":11,
-        #     "allocation_type":"regular",
-        #     "holiday_type":"employee",
-        #     "employee_id":138,
-        #     "number_of_days_display":-0.8,
-        #     "number_of_days":-0.8,
-        #     "state":'validate',
-        #     "allocation_carry_forword" :True
-        # })
-        #  Tammam Madarati 
-        # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -476,7 +477,7 @@ class HrLeave(models.Model):
         # })
         #  Qusai 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -486,9 +487,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        #  Ramzi Madhi 
+        # #  Ramzi Madhi 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -498,9 +499,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        #  Sonny Tesorero Tapia 
+        # #  Sonny Tesorero Tapia 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -510,9 +511,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Eduard Nelson Akim 
+        # # #  Eduard Nelson Akim 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (10) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -522,9 +523,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Osama Alsuliman 
+        # # #  Osama Alsuliman 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (6.76) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -534,9 +535,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Moawia Jallad 
+        # # #  Moawia Jallad 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (8.26) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -546,9 +547,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Jacinto Dugan Dimaun  
+        # # #  Jacinto Dugan Dimaun  
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (8.26) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -558,9 +559,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Faris Badhris 
+        # # #  Faris Badhris 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (6.84) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -570,9 +571,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Ibrahim Alsebai 
+        # # #  Ibrahim Alsebai 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (3.62) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -582,9 +583,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Mohammed Lafeer 
+        # # #  Mohammed Lafeer 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (5.48) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -594,9 +595,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Mohammed Hamood 
+        # # #  Mohammed Hamood 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (6.15) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -606,9 +607,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Rashed Aldawsari 
+        # # #  Rashed Aldawsari 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (6.57) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -618,9 +619,9 @@ class HrLeave(models.Model):
         #     "state":'validate',
         #     "allocation_carry_forword" :True
         # })
-        # #  Fahad Alhamazani 
+        # # #  Fahad Alhamazani 
         # self.env['hr.leave.allocation'].sudo().create({
-        #     "name":"Carry Forword from annual leave 2020 (9.75) days",
+        #     "name":"Carry Forword from annual leave 2020 (3.62) days",
         #     "holiday_status_id":11,
         #     "allocation_type":"regular",
         #     "holiday_type":"employee",
@@ -767,6 +768,37 @@ class HrLeave(models.Model):
             mail_id.sudo().send()
         return rtn          
 
+    # def write(self, values):
+    #     is_officer = self.env.user.has_group('hr_holidays.group_hr_holidays_user')
+
+    #     if not is_officer:
+    #         if any(hol.date_from.date() < fields.Date.today() for hol in self):
+    #             raise UserError(_('You must have manager rights to modify/validate a time off that already begun'))
+
+    #     employee_id = values.get('employee_id', False)
+    #     if not self.env.context.get('leave_fast_create'):
+    #         if values.get('state'):
+    #             self._check_approval_update(values['state'])
+    #             if any(holiday.validation_type == 'both' for holiday in self):
+    #                 if values.get('employee_id'):
+    #                     employees = self.env['hr.employee'].browse(values.get('employee_id'))
+    #                 else:
+    #                     employees = self.mapped('employee_id')
+    #                 self._check_double_validation_rules(employees, values['state'])
+    #         if 'date_from' in values:
+    #             values['request_date_from'] = values['date_from']
+    #         if 'date_to' in values:
+    #             values['request_date_to'] = values['date_to']
+    #     result = super(HolidaysRequest, self).write(values)
+    #     if not self.env.context.get('leave_fast_create'):
+    #         for holiday in self:
+    #             if employee_id:
+    #                 holiday.add_follower(employee_id)
+    #                 self._sync_employee_details()
+    #             if 'number_of_days' not in values and ('date_from' in values or 'date_to' in values):
+    #                 holiday._onchange_leave_dates()
+    #     return result
+
     def create_body_for_email(self,message,res_id):
         body_html = ''
         body_html +='<tr>'
@@ -778,7 +810,7 @@ class HrLeave(models.Model):
         body_html +=                        message
         body_html +=                    '</p>'
         body_html +=                    '<p style="margin-top: 24px; margin-bottom: 16px;">'
-        body_html +=                        ('<a href="/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
+        body_html +=                        ('<a href="https://my.axs-sa.com/mail/view?model=hr.leave&amp;res_id=%s" style="background-color:#875A7B; padding: 10px; text-decoration: none; color: #fff; border-radius: 5px;">') % (res_id)
         body_html +=                            'View Leave'
         body_html +=                        '</a>'
         body_html +=                    '</p>'

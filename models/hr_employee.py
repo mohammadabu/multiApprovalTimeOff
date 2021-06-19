@@ -10,8 +10,9 @@ from pytz import timezone, UTC
 
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
-    # commencement_business = fields.Date("Date of commencement of business")
-    
+    commencement_business = fields.Date("Date of commencement of business")
+    responsibility = fields.Text()       
+
 
     # @api.model
     # def getLeaveDate(commencement_business,validity_start,validity_stop,number_of_days):
@@ -100,5 +101,6 @@ class HrEmployee(models.Model):
 
 
 class HrEmployeePublic(models.Model):
-    _inherit = 'hr.employee.public'
-    responsibility = fields.Text()
+    _inherit = "hr.employee.public"
+    commencement_business = fields.Date("Date of commencement of business")
+    responsibility = fields.Text()   
